@@ -15,7 +15,7 @@ panic = 'abort'
 
 # dependencies added to new project
 [dependencies]
-proconio = "*"
+proconio = { version = "0.4.1", features = ["derive"] }
 # competitive = { git = "https://github.com/tanakh/competitive-rs.git" }
 
 [project]
@@ -26,6 +26,7 @@ proconio = "*"
 template = """
 use proconio::*;
 
+#[fastout]
 fn main() {
     input! {
         x: i32,
