@@ -1,5 +1,5 @@
 [atcoder]
-submit_via_binary = true # submit via binary by default
+submit_via_binary = false # submit via binary by default
 use_cross = true         # use `cross` instead of `cargo` when generating binaries
 binary_column = 80        # maximum column number of generated binary (0 for no wrapping)
 update_interval = 1000    # interval time of fetching result (ms)
@@ -16,6 +16,7 @@ panic = 'abort'
 # dependencies added to new project
 [dependencies]
 proconio = { version = "0.4.1", features = ["derive"] }
+itertools = "0.8.2"
 # competitive = { git = "https://github.com/tanakh/competitive-rs.git" }
 
 [project]
@@ -27,6 +28,7 @@ template = """
 use proconio::*;
 
 #[fastout]
+#[allow(non_snake_case)]
 fn main() {
     input! {
         x: i32,
