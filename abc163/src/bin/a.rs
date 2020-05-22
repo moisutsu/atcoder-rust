@@ -5,7 +5,7 @@ use proconio::marker::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        R: f64,
     }
-    println!("{}", x);
+    println!("{}", R * 2.0 * std::f64::consts::PI);
 }

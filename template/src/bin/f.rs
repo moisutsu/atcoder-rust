@@ -1,4 +1,5 @@
 use proconio::*;
+use proconio::marker::*;
 
 #[fastout]
 #[allow(non_snake_case)]
