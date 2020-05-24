@@ -1,4 +1,5 @@
 use proconio::*;
+#[allow(unused_imports)]
 use proconio::marker::*;
 
 #[fastout]
