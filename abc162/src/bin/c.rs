@@ -1,4 +1,5 @@
 use proconio::*;
+#[allow(unused_imports)]
 use proconio::marker::*;
 
 #[fastout]
@@ -11,7 +12,7 @@ fn main() {
     for i in 1..K + 1 {
         for j in 1..K + 1 {
             for k in 1..K + 1 {
-                ans += gcd3(i, j, k);
+                ans += gcd(gcd(i, j), k);
             }
         }
     }
@@ -30,8 +31,4 @@ fn gcd(a: usize, b: usize) -> usize {
         b = r;
     }
     b
-}
-
-fn gcd3(a: usize, b: usize, c: usize) -> usize {
-    gcd(gcd(a, b), c)
 }
