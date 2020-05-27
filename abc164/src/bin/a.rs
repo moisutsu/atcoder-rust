@@ -4,7 +4,13 @@ use proconio::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        S: usize, W: usize,
     }
-    println!("{}", x);
+    println!("{}",
+        if W >= S {
+            "unsafe"
+        } else {
+            "safe"
+        }
+    );
 }

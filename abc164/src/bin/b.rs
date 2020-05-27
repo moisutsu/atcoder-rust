@@ -4,7 +4,22 @@ use proconio::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        mut A: i32, B: i32, mut C: i32, D: i32
     }
-    println!("{}", x);
+    let mut i = 0;
+    while A > 0 && C > 0 {
+        if i % 2 == 0 {
+            C -= B;
+        } else {
+            A -= D;
+        }
+        i += 1;
+    }
+    println!("{}",
+        if i % 2 == 1 {
+            "Yes"
+        } else {
+            "No"
+        }
+    )
 }
