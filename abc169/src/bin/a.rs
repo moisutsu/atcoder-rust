@@ -6,7 +6,7 @@ use proconio::marker::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        A: usize, B: usize
     }
-    println!("{}", x);
+    println!("{}", A * B);
 }
