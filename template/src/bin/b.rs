@@ -8,5 +8,6 @@ fn main() {
     input! {
         x: i32,
     }
-    println!("{}", x);
+    let mut ans = 0;
+    println!("{}", ans);
 }

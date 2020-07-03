@@ -1,13 +1,12 @@
-use proconio::*;
 #[allow(unused_imports)]
 use proconio::marker::*;
+use proconio::*;
 
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        a: String,
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    println!("{}", if a == a.to_uppercase() { "A" } else { "a" });
 }
