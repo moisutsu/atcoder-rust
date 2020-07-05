@@ -6,8 +6,10 @@ use proconio::marker::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        N: usize,
+        mut A: [usize; N],
     }
-    let mut ans = 0;
+    A.sort_unstable();
+    let ans: usize = (1..N).map(|x| A[x]).sum();
     println!("{}", ans);
 }

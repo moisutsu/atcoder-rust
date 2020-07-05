@@ -6,8 +6,26 @@ use proconio::marker::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        N: usize,
+        S: [String; N],
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut ac = 0;
+    let mut wa = 0;
+    let mut tle = 0;
+    let mut re = 0;
+    for s in S {
+        if s == "AC" {
+            ac += 1;
+        } else if s == "WA" {
+            wa += 1;
+        } else if s == "TLE" {
+            tle += 1;
+        } else {
+            re += 1;
+        }
+    }
+    println!("AC x {}", ac);
+    println!("WA x {}", wa);
+    println!("TLE x {}", tle);
+    println!("RE x {}", re);
 }

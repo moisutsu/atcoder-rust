@@ -6,8 +6,11 @@ use proconio::marker::*;
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        N: i32,
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    if N % 1000 == 0 {
+        println!("0");
+    } else {
+        println!("{}", 1000 - (N % 1000));
+    }
 }
