@@ -4,28 +4,10 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-a = {name = "abc087-a",problem = {platform = "atcoder",contest = "abc087",index = "A"}}
-b = {name = "abc087-b",problem = {platform = "atcoder",contest = "abc087",index = "B"}}
-c = {name = "abc087-c",problem = {platform = "atcoder",contest = "abc087",index = "C"}}
-d = {name = "abc087-d",problem = {platform = "atcoder",contest = "abc087",index = "D"}}
-
 # dependencies added to new project
 [dependencies]
 proconio = "*"
 
-[[bin]]
-name = "abc087-a"
-path = "./src/bin/a.rs"
-
-[[bin]]
-name = "abc087-b"
-path = "./src/bin/b.rs"
-
-[[bin]]
-name = "abc087-c"
-path = "./src/bin/c.rs"
-
-[[bin]]
-name = "abc087-d"
-path = "./src/bin/d.rs"
+[profile.release]
+lto = true
+panic = 'abort'

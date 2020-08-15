@@ -1,5 +1,5 @@
 [package]
-name = "abc120"
+name = "abc"
 version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
@@ -7,6 +7,7 @@ edition = "2018"
 # dependencies added to new project
 [dependencies]
 proconio = { version = "0.4.1", features = ["derive"] }
+itertools = "0.8.2"
 
 [profile.release]
 lto = true

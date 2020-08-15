@@ -4,39 +4,11 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-a = {name = "abc054-a",problem = {platform = "atcoder",contest = "abc054",index = "A"}}
-b = {name = "abc054-b",problem = {platform = "atcoder",contest = "abc054",index = "B"}}
-c = {name = "abc054-c",problem = {platform = "atcoder",contest = "abc054",index = "C"}}
-d = {name = "abc054-d",problem = {platform = "atcoder",contest = "abc054",index = "D"}}
-e = {name = "abc054-e",problem = {platform = "atcoder",contest = "abc054",index = "E"}}
-f = {name = "abc054-f",problem = {platform = "atcoder",contest = "abc054",index = "F"}}
-
 # dependencies added to new project
 [dependencies]
 proconio = { version = "0.4.1", features = ["derive"] }
 itertools = "0.8.2"
 
-[[bin]]
-name = "abc054-a"
-path = "./src/bin/a.rs"
-
-[[bin]]
-name = "abc054-b"
-path = "./src/bin/b.rs"
-
-[[bin]]
-name = "abc054-c"
-path = "./src/bin/c.rs"
-
-[[bin]]
-name = "abc054-d"
-path = "./src/bin/d.rs"
-
-[[bin]]
-name = "abc054-e"
-path = "./src/bin/e.rs"
-
-[[bin]]
-name = "abc054-f"
-path = "./src/bin/f.rs"
+[profile.release]
+lto = true
+panic = 'abort'

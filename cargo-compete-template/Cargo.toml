@@ -1,9 +1,0 @@
-[package]
-name = "cargo-compete-template"
-version = "0.1.0"
-edition = "2018"
-publish = false
-
-[[bin]]
-name = "cargo-compete-template"
-path = "src/main.rs"
