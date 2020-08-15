@@ -29,13 +29,20 @@ use proconio::*;
 #[allow(unused_imports)]
 use proconio::marker::*;
 
+#[allow(unused_macros)]
+macro_rules! echo {
+    ($ x : expr ) => {
+        println!("{}", $x);
+    };
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        x: i32,
+        N: i32,
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut ans = N;
+    echo!(ans);
 }
 """
