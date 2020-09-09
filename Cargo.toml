@@ -1,3 +1,0 @@
-[workspace]
-members = ["abc054", "abc057", "abc081", "abc083", "abc085", "abc086", "abc087", "abc088", "abc095", "abc106", "abc120", "abc122", "abc128", "abc135", "abc136", "abc136/template", "abc139", "abc144", "abc145", "abc147", "abc150", "abc162", "abc163", "abc164", "abc165", "abc166", "abc167", "abc168", "abc169", "abc170", "abc171", "abc172", "abc173", "abc174", "abc175", "dp", "sumitb2019", "template", "cargo-compete-template", "abc161", "abc160"]
-exclude = []

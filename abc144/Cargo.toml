@@ -4,38 +4,40 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-a = {name = "abc144-a",problem = {platform = "atcoder",contest = "abc144",index = "A"}}
-b = {name = "abc144-b",problem = {platform = "atcoder",contest = "abc144",index = "B"}}
-c = {name = "abc144-c",problem = {platform = "atcoder",contest = "abc144",index = "C"}}
-d = {name = "abc144-d",problem = {platform = "atcoder",contest = "abc144",index = "D"}}
-e = {name = "abc144-e",problem = {platform = "atcoder",contest = "abc144",index = "E"}}
-f = {name = "abc144-f",problem = {platform = "atcoder",contest = "abc144",index = "F"}}
+[package.metadata.cargo-compete]
+config = "../compete.toml"
 
-# dependencies added to new project
-[dependencies]
-proconio = { version = "0.4.1", features = ["derive"] }
+[package.metadata.cargo-compete.bin]
+a = { name = "abc144-a", problem = { platform = "atcoder", contest = "abc144", index = "A", url = "https://atcoder.jp/contests/abc144/tasks/abc144_a" } }
+b = { name = "abc144-b", problem = { platform = "atcoder", contest = "abc144", index = "B", url = "https://atcoder.jp/contests/abc144/tasks/abc144_b" } }
+c = { name = "abc144-c", problem = { platform = "atcoder", contest = "abc144", index = "C", url = "https://atcoder.jp/contests/abc144/tasks/abc144_c" } }
+d = { name = "abc144-d", problem = { platform = "atcoder", contest = "abc144", index = "D", url = "https://atcoder.jp/contests/abc144/tasks/abc144_d" } }
+e = { name = "abc144-e", problem = { platform = "atcoder", contest = "abc144", index = "E", url = "https://atcoder.jp/contests/abc144/tasks/abc144_e" } }
+f = { name = "abc144-f", problem = { platform = "atcoder", contest = "abc144", index = "F", url = "https://atcoder.jp/contests/abc144/tasks/abc144_f" } }
 
 [[bin]]
 name = "abc144-a"
-path = "./src/bin/a.rs"
+path = "src/bin/a.rs"
 
 [[bin]]
 name = "abc144-b"
-path = "./src/bin/b.rs"
+path = "src/bin/b.rs"
 
 [[bin]]
 name = "abc144-c"
-path = "./src/bin/c.rs"
+path = "src/bin/c.rs"
 
 [[bin]]
 name = "abc144-d"
-path = "./src/bin/d.rs"
+path = "src/bin/d.rs"
 
 [[bin]]
 name = "abc144-e"
-path = "./src/bin/e.rs"
+path = "src/bin/e.rs"
 
 [[bin]]
 name = "abc144-f"
-path = "./src/bin/f.rs"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"

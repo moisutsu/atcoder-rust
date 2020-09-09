@@ -1,8 +1,11 @@
 [package]
 name = "abc161"
 version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
-publish = false
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
 
 [package.metadata.cargo-compete.bin]
 a = { name = "abc161-a", problem = { platform = "atcoder", contest = "abc161", index = "A", url = "https://atcoder.jp/contests/abc161/tasks/abc161_a" } }
@@ -35,7 +38,6 @@ path = "src/bin/e.rs"
 [[bin]]
 name = "abc161-f"
 path = "src/bin/f.rs"
-
 [dependencies]
-proconio = { version = "0.4.1", features = ["derive"] }
-itertools = "0.8.2"
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"

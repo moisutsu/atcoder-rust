@@ -1,0 +1,13 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      ABC
+    out: |
+      ARC
+
+extend: []

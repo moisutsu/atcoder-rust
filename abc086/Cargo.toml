@@ -4,28 +4,30 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-a = {name = "abc086-a",problem = {platform = "atcoder",contest = "abc086",index = "A"}}
-b = {name = "abc086-b",problem = {platform = "atcoder",contest = "abc086",index = "B"}}
-c = {name = "abc086-c",problem = {platform = "atcoder",contest = "abc086",index = "C"}}
-d = {name = "abc086-d",problem = {platform = "atcoder",contest = "abc086",index = "D"}}
+[package.metadata.cargo-compete]
+config = "../compete.toml"
 
-# dependencies added to new project
-[dependencies]
-proconio = "*"
+[package.metadata.cargo-compete.bin]
+a = { name = "abc086-a", problem = { platform = "atcoder", contest = "abc086", index = "A", url = "https://atcoder.jp/contests/abc086/tasks/abc086_a" } }
+b = { name = "abc086-b", problem = { platform = "atcoder", contest = "abc086", index = "B", url = "https://atcoder.jp/contests/abc086/tasks/abc086_b" } }
+c = { name = "abc086-c", problem = { platform = "atcoder", contest = "abc086", index = "C", url = "https://atcoder.jp/contests/abc086/tasks/arc089_a" } }
+d = { name = "abc086-d", problem = { platform = "atcoder", contest = "abc086", index = "D", url = "https://atcoder.jp/contests/abc086/tasks/arc089_b" } }
 
 [[bin]]
 name = "abc086-a"
-path = "./src/bin/a.rs"
+path = "src/bin/a.rs"
 
 [[bin]]
 name = "abc086-b"
-path = "./src/bin/b.rs"
+path = "src/bin/b.rs"
 
 [[bin]]
 name = "abc086-c"
-path = "./src/bin/c.rs"
+path = "src/bin/c.rs"
 
 [[bin]]
 name = "abc086-d"
-path = "./src/bin/d.rs"
+path = "src/bin/d.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
