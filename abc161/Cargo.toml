@@ -1,0 +1,41 @@
+[package]
+name = "abc161"
+version = "0.1.0"
+edition = "2018"
+publish = false
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc161-a", problem = { platform = "atcoder", contest = "abc161", index = "A", url = "https://atcoder.jp/contests/abc161/tasks/abc161_a" } }
+b = { name = "abc161-b", problem = { platform = "atcoder", contest = "abc161", index = "B", url = "https://atcoder.jp/contests/abc161/tasks/abc161_b" } }
+c = { name = "abc161-c", problem = { platform = "atcoder", contest = "abc161", index = "C", url = "https://atcoder.jp/contests/abc161/tasks/abc161_c" } }
+d = { name = "abc161-d", problem = { platform = "atcoder", contest = "abc161", index = "D", url = "https://atcoder.jp/contests/abc161/tasks/abc161_d" } }
+e = { name = "abc161-e", problem = { platform = "atcoder", contest = "abc161", index = "E", url = "https://atcoder.jp/contests/abc161/tasks/abc161_e" } }
+f = { name = "abc161-f", problem = { platform = "atcoder", contest = "abc161", index = "F", url = "https://atcoder.jp/contests/abc161/tasks/abc161_f" } }
+
+[[bin]]
+name = "abc161-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc161-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc161-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc161-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc161-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc161-f"
+path = "src/bin/f.rs"
+
+[dependencies]
+proconio = { version = "0.4.1", features = ["derive"] }
+itertools = "0.8.2"

@@ -1,0 +1,13 @@
+[package]
+name = "cargo-compete-template"
+version = "0.1.0"
+edition = "2018"
+publish = false
+
+[[bin]]
+name = "cargo-compete-template"
+path = "src/main.rs"
+
+[dependencies]
+proconio = { version = "0.4.1", features = ["derive"] }
+itertools = "0.8.2"

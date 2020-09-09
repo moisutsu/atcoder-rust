@@ -4,11 +4,39 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
+[package.metadata.cargo-compete.bin]
+a = {name = "abc145-a",problem = {platform = "atcoder",contest = "abc145",index = "A"}}
+b = {name = "abc145-b",problem = {platform = "atcoder",contest = "abc145",index = "B"}}
+c = {name = "abc145-c",problem = {platform = "atcoder",contest = "abc145",index = "C"}}
+d = {name = "abc145-d",problem = {platform = "atcoder",contest = "abc145",index = "D"}}
+e = {name = "abc145-e",problem = {platform = "atcoder",contest = "abc145",index = "E"}}
+f = {name = "abc145-f",problem = {platform = "atcoder",contest = "abc145",index = "F"}}
+
 # dependencies added to new project
 [dependencies]
 proconio = { version = "0.4.1", features = ["derive"] }
 itertools = "0.8.2"
 
-[profile.release]
-lto = true
-panic = 'abort'
+[[bin]]
+name = "abc145-a"
+path = "./src/bin/a.rs"
+
+[[bin]]
+name = "abc145-b"
+path = "./src/bin/b.rs"
+
+[[bin]]
+name = "abc145-c"
+path = "./src/bin/c.rs"
+
+[[bin]]
+name = "abc145-d"
+path = "./src/bin/d.rs"
+
+[[bin]]
+name = "abc145-e"
+path = "./src/bin/e.rs"
+
+[[bin]]
+name = "abc145-f"
+path = "./src/bin/f.rs"
