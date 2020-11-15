@@ -13,19 +13,21 @@ macro_rules! echo {
     }
 }
 
+macro_rules! YesNo {
+    ($ flag : expr ) => {
+        if $flag {
+            "Yes"
+        } else {
+            "No"
+        }
+    };
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize, A: [usize; N],
+        D: usize, T: usize, S: usize
     }
-    let mut ans = 0;
-    let mut corrent_height = A[0];
-    for &A_i in A.iter() {
-        if A_i > corrent_height {
-            corrent_height = A_i;
-        }
-        ans += corrent_height - A_i;
-    }
-    echo!(ans);
+    echo!(YesNo!(T * S >= D));
 }

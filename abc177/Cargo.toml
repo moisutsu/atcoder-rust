@@ -1,0 +1,43 @@
+[package]
+name = "abc177"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc177-a", problem = { platform = "atcoder", contest = "abc177", index = "A", url = "https://atcoder.jp/contests/abc177/tasks/abc177_a" } }
+b = { name = "abc177-b", problem = { platform = "atcoder", contest = "abc177", index = "B", url = "https://atcoder.jp/contests/abc177/tasks/abc177_b" } }
+c = { name = "abc177-c", problem = { platform = "atcoder", contest = "abc177", index = "C", url = "https://atcoder.jp/contests/abc177/tasks/abc177_c" } }
+d = { name = "abc177-d", problem = { platform = "atcoder", contest = "abc177", index = "D", url = "https://atcoder.jp/contests/abc177/tasks/abc177_d" } }
+e = { name = "abc177-e", problem = { platform = "atcoder", contest = "abc177", index = "E", url = "https://atcoder.jp/contests/abc177/tasks/abc177_e" } }
+f = { name = "abc177-f", problem = { platform = "atcoder", contest = "abc177", index = "F", url = "https://atcoder.jp/contests/abc177/tasks/abc177_f" } }
+
+[[bin]]
+name = "abc177-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc177-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc177-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc177-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc177-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc177-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"

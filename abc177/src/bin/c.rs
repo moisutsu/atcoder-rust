@@ -17,15 +17,9 @@ macro_rules! echo {
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize, A: [usize; N],
+        N: i32,
     }
     let mut ans = 0;
-    let mut corrent_height = A[0];
-    for &A_i in A.iter() {
-        if A_i > corrent_height {
-            corrent_height = A_i;
-        }
-        ans += corrent_height - A_i;
-    }
+    ans = N;
     echo!(ans);
 }
