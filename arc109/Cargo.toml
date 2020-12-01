@@ -1,0 +1,43 @@
+[package]
+name = "arc109"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "arc109-a", problem = { platform = "atcoder", contest = "arc109", index = "A", url = "https://atcoder.jp/contests/arc109/tasks/arc109_a" } }
+b = { name = "arc109-b", problem = { platform = "atcoder", contest = "arc109", index = "B", url = "https://atcoder.jp/contests/arc109/tasks/arc109_b" } }
+c = { name = "arc109-c", problem = { platform = "atcoder", contest = "arc109", index = "C", url = "https://atcoder.jp/contests/arc109/tasks/arc109_c" } }
+d = { name = "arc109-d", problem = { platform = "atcoder", contest = "arc109", index = "D", url = "https://atcoder.jp/contests/arc109/tasks/arc109_d" } }
+e = { name = "arc109-e", problem = { platform = "atcoder", contest = "arc109", index = "E", url = "https://atcoder.jp/contests/arc109/tasks/arc109_e" } }
+f = { name = "arc109-f", problem = { platform = "atcoder", contest = "arc109", index = "F", url = "https://atcoder.jp/contests/arc109/tasks/arc109_f" } }
+
+[[bin]]
+name = "arc109-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc109-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc109-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc109-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "arc109-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "arc109-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
