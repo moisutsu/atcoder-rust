@@ -1,6 +1,6 @@
-use proconio::*;
 #[allow(unused_imports)]
 use proconio::marker::*;
+use proconio::*;
 
 #[allow(unused_macros)]
 macro_rules! echo {
@@ -13,8 +13,7 @@ macro_rules! echo {
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: i32,
+        L: f64,
     }
-    let mut ans = N;
-    echo!(ans);
+    echo!((L / 3.0).powf(3.0));
 }
