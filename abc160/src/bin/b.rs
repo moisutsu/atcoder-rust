@@ -13,8 +13,10 @@ macro_rules! echo {
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: i32,
+        X: usize,
     }
-    let mut ans = N;
-    echo!(ans);
+    let big_count = X / 500;
+    let remain_X = X % 500;
+    let small_count = remain_X / 5;
+    echo!(big_count * 1000 + small_count * 5);
 }
