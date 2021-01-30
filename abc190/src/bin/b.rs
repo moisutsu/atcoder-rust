@@ -30,13 +30,5 @@ fn main() {
         N: usize, S: usize, D: usize,
         XYs: [(usize, usize); N],
     }
-    let mut ans = false;
-    for &(X, Y) in XYs.iter() {
-        if X >= S || Y <= D {
-            continue;
-        }
-        ans = true;
-        break;
-    }
-    echo!(YesNo!(ans));
+    echo!(YesNo!(XYs.into_iter().any(|(X, Y)| !(X >= S || Y <= D))));
 }
