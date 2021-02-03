@@ -4,39 +4,140 @@ version = "0.1.0"
 authors = ["moisutsu <moisutsu@gmail.com>"]
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-a = {name = "dp-a",problem = {platform = "atcoder",contest = "dp",index = "A"}}
-b = {name = "dp-b",problem = {platform = "atcoder",contest = "dp",index = "B"}}
-c = {name = "dp-c",problem = {platform = "atcoder",contest = "dp",index = "C"}}
-d = {name = "dp-d",problem = {platform = "atcoder",contest = "dp",index = "D"}}
-e = {name = "dp-e",problem = {platform = "atcoder",contest = "dp",index = "E"}}
-f = {name = "dp-f",problem = {platform = "atcoder",contest = "dp",index = "F"}}
+[package.metadata.cargo-compete]
+config = "../compete.toml"
 
-# dependencies added to new project
-[dependencies]
-proconio = { version = "0.4.1", features = ["derive"] }
-itertools = "0.8.2"
+[package.metadata.cargo-compete.bin]
+a = { name = "dp-a", problem = { platform = "atcoder", contest = "dp", index = "A", url = "https://atcoder.jp/contests/dp/tasks/dp_a" } }
+b = { name = "dp-b", problem = { platform = "atcoder", contest = "dp", index = "B", url = "https://atcoder.jp/contests/dp/tasks/dp_b" } }
+c = { name = "dp-c", problem = { platform = "atcoder", contest = "dp", index = "C", url = "https://atcoder.jp/contests/dp/tasks/dp_c" } }
+d = { name = "dp-d", problem = { platform = "atcoder", contest = "dp", index = "D", url = "https://atcoder.jp/contests/dp/tasks/dp_d" } }
+e = { name = "dp-e", problem = { platform = "atcoder", contest = "dp", index = "E", url = "https://atcoder.jp/contests/dp/tasks/dp_e" } }
+f = { name = "dp-f", problem = { platform = "atcoder", contest = "dp", index = "F", url = "https://atcoder.jp/contests/dp/tasks/dp_f" } }
+g = { name = "dp-g", problem = { platform = "atcoder", contest = "dp", index = "G", url = "https://atcoder.jp/contests/dp/tasks/dp_g" } }
+h = { name = "dp-h", problem = { platform = "atcoder", contest = "dp", index = "H", url = "https://atcoder.jp/contests/dp/tasks/dp_h" } }
+i = { name = "dp-i", problem = { platform = "atcoder", contest = "dp", index = "I", url = "https://atcoder.jp/contests/dp/tasks/dp_i" } }
+j = { name = "dp-j", problem = { platform = "atcoder", contest = "dp", index = "J", url = "https://atcoder.jp/contests/dp/tasks/dp_j" } }
+k = { name = "dp-k", problem = { platform = "atcoder", contest = "dp", index = "K", url = "https://atcoder.jp/contests/dp/tasks/dp_k" } }
+l = { name = "dp-l", problem = { platform = "atcoder", contest = "dp", index = "L", url = "https://atcoder.jp/contests/dp/tasks/dp_l" } }
+m = { name = "dp-m", problem = { platform = "atcoder", contest = "dp", index = "M", url = "https://atcoder.jp/contests/dp/tasks/dp_m" } }
+n = { name = "dp-n", problem = { platform = "atcoder", contest = "dp", index = "N", url = "https://atcoder.jp/contests/dp/tasks/dp_n" } }
+o = { name = "dp-o", problem = { platform = "atcoder", contest = "dp", index = "O", url = "https://atcoder.jp/contests/dp/tasks/dp_o" } }
+p = { name = "dp-p", problem = { platform = "atcoder", contest = "dp", index = "P", url = "https://atcoder.jp/contests/dp/tasks/dp_p" } }
+q = { name = "dp-q", problem = { platform = "atcoder", contest = "dp", index = "Q", url = "https://atcoder.jp/contests/dp/tasks/dp_q" } }
+r = { name = "dp-r", problem = { platform = "atcoder", contest = "dp", index = "R", url = "https://atcoder.jp/contests/dp/tasks/dp_r" } }
+s = { name = "dp-s", problem = { platform = "atcoder", contest = "dp", index = "S", url = "https://atcoder.jp/contests/dp/tasks/dp_s" } }
+t = { name = "dp-t", problem = { platform = "atcoder", contest = "dp", index = "T", url = "https://atcoder.jp/contests/dp/tasks/dp_t" } }
+u = { name = "dp-u", problem = { platform = "atcoder", contest = "dp", index = "U", url = "https://atcoder.jp/contests/dp/tasks/dp_u" } }
+v = { name = "dp-v", problem = { platform = "atcoder", contest = "dp", index = "V", url = "https://atcoder.jp/contests/dp/tasks/dp_v" } }
+w = { name = "dp-w", problem = { platform = "atcoder", contest = "dp", index = "W", url = "https://atcoder.jp/contests/dp/tasks/dp_w" } }
+x = { name = "dp-x", problem = { platform = "atcoder", contest = "dp", index = "X", url = "https://atcoder.jp/contests/dp/tasks/dp_x" } }
+y = { name = "dp-y", problem = { platform = "atcoder", contest = "dp", index = "Y", url = "https://atcoder.jp/contests/dp/tasks/dp_y" } }
+z = { name = "dp-z", problem = { platform = "atcoder", contest = "dp", index = "Z", url = "https://atcoder.jp/contests/dp/tasks/dp_z" } }
 
 [[bin]]
 name = "dp-a"
-path = "./src/bin/a.rs"
+path = "src/bin/a.rs"
 
 [[bin]]
 name = "dp-b"
-path = "./src/bin/b.rs"
+path = "src/bin/b.rs"
 
 [[bin]]
 name = "dp-c"
-path = "./src/bin/c.rs"
+path = "src/bin/c.rs"
 
 [[bin]]
 name = "dp-d"
-path = "./src/bin/d.rs"
+path = "src/bin/d.rs"
 
 [[bin]]
 name = "dp-e"
-path = "./src/bin/e.rs"
+path = "src/bin/e.rs"
 
 [[bin]]
 name = "dp-f"
-path = "./src/bin/f.rs"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "dp-g"
+path = "src/bin/g.rs"
+
+[[bin]]
+name = "dp-h"
+path = "src/bin/h.rs"
+
+[[bin]]
+name = "dp-i"
+path = "src/bin/i.rs"
+
+[[bin]]
+name = "dp-j"
+path = "src/bin/j.rs"
+
+[[bin]]
+name = "dp-k"
+path = "src/bin/k.rs"
+
+[[bin]]
+name = "dp-l"
+path = "src/bin/l.rs"
+
+[[bin]]
+name = "dp-m"
+path = "src/bin/m.rs"
+
+[[bin]]
+name = "dp-n"
+path = "src/bin/n.rs"
+
+[[bin]]
+name = "dp-o"
+path = "src/bin/o.rs"
+
+[[bin]]
+name = "dp-p"
+path = "src/bin/p.rs"
+
+[[bin]]
+name = "dp-q"
+path = "src/bin/q.rs"
+
+[[bin]]
+name = "dp-r"
+path = "src/bin/r.rs"
+
+[[bin]]
+name = "dp-s"
+path = "src/bin/s.rs"
+
+[[bin]]
+name = "dp-t"
+path = "src/bin/t.rs"
+
+[[bin]]
+name = "dp-u"
+path = "src/bin/u.rs"
+
+[[bin]]
+name = "dp-v"
+path = "src/bin/v.rs"
+
+[[bin]]
+name = "dp-w"
+path = "src/bin/w.rs"
+
+[[bin]]
+name = "dp-x"
+path = "src/bin/x.rs"
+
+[[bin]]
+name = "dp-y"
+path = "src/bin/y.rs"
+
+[[bin]]
+name = "dp-z"
+path = "src/bin/z.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
