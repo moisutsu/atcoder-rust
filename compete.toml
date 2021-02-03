@@ -67,7 +67,7 @@ macro_rules! echo {
 fn main() {
     input! {
         N: i32,
-    }
+    };
     let mut ans = 0;
     ans = N;
     echo!(ans);
