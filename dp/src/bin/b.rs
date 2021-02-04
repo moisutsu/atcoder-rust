@@ -1,6 +1,6 @@
-use proconio::*;
 #[allow(unused_imports)]
 use proconio::marker::*;
+use proconio::*;
 
 #[allow(unused_macros)]
 macro_rules! echo {
