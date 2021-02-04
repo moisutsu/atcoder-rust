@@ -1,8 +1,19 @@
 ---
 type: Batch
-timelimit: ~
+timelimit: 2s
 match: Lines
 
-cases: []
-
+cases:
+  - name: sample1
+    in: |
+      3
+      2 3 5
+    out: |
+      7
+  - name: sample2
+    in: |
+      10
+      1 1 1 1 1 1 1 1 1 1
+    out: |
+      11
 extend: []
