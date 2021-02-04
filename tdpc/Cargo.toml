@@ -1,0 +1,113 @@
+[package]
+name = "tdpc"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "tdpc-a", problem = { platform = "atcoder", contest = "tdpc", index = "A", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_contest" } }
+b = { name = "tdpc-b", problem = { platform = "atcoder", contest = "tdpc", index = "B", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_game" } }
+c = { name = "tdpc-c", problem = { platform = "atcoder", contest = "tdpc", index = "C", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_tournament" } }
+d = { name = "tdpc-d", problem = { platform = "atcoder", contest = "tdpc", index = "D", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_dice" } }
+e = { name = "tdpc-e", problem = { platform = "atcoder", contest = "tdpc", index = "E", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_number" } }
+f = { name = "tdpc-f", problem = { platform = "atcoder", contest = "tdpc", index = "F", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_semiexp" } }
+g = { name = "tdpc-g", problem = { platform = "atcoder", contest = "tdpc", index = "G", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_lexicographical" } }
+h = { name = "tdpc-h", problem = { platform = "atcoder", contest = "tdpc", index = "H", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_knapsack" } }
+i = { name = "tdpc-i", problem = { platform = "atcoder", contest = "tdpc", index = "I", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_iwi" } }
+j = { name = "tdpc-j", problem = { platform = "atcoder", contest = "tdpc", index = "J", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_ball" } }
+k = { name = "tdpc-k", problem = { platform = "atcoder", contest = "tdpc", index = "K", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_target" } }
+l = { name = "tdpc-l", problem = { platform = "atcoder", contest = "tdpc", index = "L", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_cat" } }
+m = { name = "tdpc-m", problem = { platform = "atcoder", contest = "tdpc", index = "M", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_house" } }
+n = { name = "tdpc-n", problem = { platform = "atcoder", contest = "tdpc", index = "N", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_tree" } }
+o = { name = "tdpc-o", problem = { platform = "atcoder", contest = "tdpc", index = "O", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_string" } }
+p = { name = "tdpc-p", problem = { platform = "atcoder", contest = "tdpc", index = "P", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_eel" } }
+q = { name = "tdpc-q", problem = { platform = "atcoder", contest = "tdpc", index = "Q", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_concatenation" } }
+r = { name = "tdpc-r", problem = { platform = "atcoder", contest = "tdpc", index = "R", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_graph" } }
+s = { name = "tdpc-s", problem = { platform = "atcoder", contest = "tdpc", index = "S", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_grid" } }
+t = { name = "tdpc-t", problem = { platform = "atcoder", contest = "tdpc", index = "T", url = "https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci" } }
+
+[[bin]]
+name = "tdpc-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "tdpc-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "tdpc-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "tdpc-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "tdpc-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "tdpc-f"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "tdpc-g"
+path = "src/bin/g.rs"
+
+[[bin]]
+name = "tdpc-h"
+path = "src/bin/h.rs"
+
+[[bin]]
+name = "tdpc-i"
+path = "src/bin/i.rs"
+
+[[bin]]
+name = "tdpc-j"
+path = "src/bin/j.rs"
+
+[[bin]]
+name = "tdpc-k"
+path = "src/bin/k.rs"
+
+[[bin]]
+name = "tdpc-l"
+path = "src/bin/l.rs"
+
+[[bin]]
+name = "tdpc-m"
+path = "src/bin/m.rs"
+
+[[bin]]
+name = "tdpc-n"
+path = "src/bin/n.rs"
+
+[[bin]]
+name = "tdpc-o"
+path = "src/bin/o.rs"
+
+[[bin]]
+name = "tdpc-p"
+path = "src/bin/p.rs"
+
+[[bin]]
+name = "tdpc-q"
+path = "src/bin/q.rs"
+
+[[bin]]
+name = "tdpc-r"
+path = "src/bin/r.rs"
+
+[[bin]]
+name = "tdpc-s"
+path = "src/bin/s.rs"
+
+[[bin]]
+name = "tdpc-t"
+path = "src/bin/t.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"

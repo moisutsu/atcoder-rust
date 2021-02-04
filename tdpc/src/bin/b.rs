@@ -25,12 +25,12 @@ fn main() {
     };
     let mut dp = vec![std::i128::MAX / 2; N];
     dp[0] = 0;
-    for n_i in 1..N {
+    for n_i in 0..N {
         for k_i in 1..=K {
             if n_i >= k_i {
                 chmin!(dp[n_i], dp[n_i - k_i] + (hs[n_i] - hs[n_i - k_i]).abs());
             }
         }
     }
-    echo!(dp[N - 1]);
+    echo!(dp[N]);
 }
