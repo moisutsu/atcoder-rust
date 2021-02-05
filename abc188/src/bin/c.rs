@@ -14,6 +14,17 @@ macro_rules! echo {
     }
 }
 
+trait GetIndex {
+    type Element;
+    fn get_index(&self, value: &Self::Element) -> Option<usize>;
+}
+impl<T: PartialEq> GetIndex for [T] {
+    type Element = T;
+    fn get_index(&self, value: &Self::Element) -> Option<usize> {
+        self.iter().position(|x| x == value)
+    }
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
@@ -31,5 +42,5 @@ fn main() {
         players = new_players
     }
     let ans_rate = min(players[0], players[1]);
-    echo!(As.iter().position(|&x| x == ans_rate).unwrap() + 1);
+    echo!(As.get_index(&ans_rate).unwrap() + 1);
 }
