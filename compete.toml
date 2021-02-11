@@ -69,7 +69,6 @@ fn main() {
         N: i32,
     };
     let mut ans = 0;
-    ans = N;
     echo!(ans);
 }
 '''
