@@ -47,9 +47,9 @@ itertools = "=0.9.0"
 [new.template.src]
 kind = "inline"
 content = '''
-use proconio::*;
 #[allow(unused_imports)]
 use proconio::marker::*;
+use proconio::*;
 
 #[allow(unused_macros)]
 macro_rules! echo {
