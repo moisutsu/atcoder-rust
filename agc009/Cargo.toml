@@ -1,0 +1,38 @@
+[package]
+name = "agc009"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "agc009-a", problem = { platform = "atcoder", contest = "agc009", index = "A", url = "https://atcoder.jp/contests/agc009/tasks/agc009_a" } }
+b = { name = "agc009-b", problem = { platform = "atcoder", contest = "agc009", index = "B", url = "https://atcoder.jp/contests/agc009/tasks/agc009_b" } }
+c = { name = "agc009-c", problem = { platform = "atcoder", contest = "agc009", index = "C", url = "https://atcoder.jp/contests/agc009/tasks/agc009_c" } }
+d = { name = "agc009-d", problem = { platform = "atcoder", contest = "agc009", index = "D", url = "https://atcoder.jp/contests/agc009/tasks/agc009_d" } }
+e = { name = "agc009-e", problem = { platform = "atcoder", contest = "agc009", index = "E", url = "https://atcoder.jp/contests/agc009/tasks/agc009_e" } }
+
+[[bin]]
+name = "agc009-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "agc009-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "agc009-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "agc009-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "agc009-e"
+path = "src/bin/e.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
