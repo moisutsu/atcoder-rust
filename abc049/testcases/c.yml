@@ -1,0 +1,23 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      erasedream
+    out: |
+      YES
+  - name: sample2
+    in: |
+      dreameraser
+    out: |
+      YES
+  - name: sample3
+    in: |
+      dreamerer
+    out: |
+      NO
+
+extend: []
