@@ -1,0 +1,33 @@
+[package]
+name = "abc121"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc121-a", problem = { platform = "atcoder", contest = "abc121", index = "A", url = "https://atcoder.jp/contests/abc121/tasks/abc121_a" } }
+b = { name = "abc121-b", problem = { platform = "atcoder", contest = "abc121", index = "B", url = "https://atcoder.jp/contests/abc121/tasks/abc121_b" } }
+c = { name = "abc121-c", problem = { platform = "atcoder", contest = "abc121", index = "C", url = "https://atcoder.jp/contests/abc121/tasks/abc121_c" } }
+d = { name = "abc121-d", problem = { platform = "atcoder", contest = "abc121", index = "D", url = "https://atcoder.jp/contests/abc121/tasks/abc121_d" } }
+
+[[bin]]
+name = "abc121-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc121-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc121-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc121-d"
+path = "src/bin/d.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
