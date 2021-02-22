@@ -18,29 +18,39 @@ macro_rules! echo {
 fn main() {
     input! {
         X: Chars,
-        M: u128,
+        M: i128,
     };
-    let mut ans = 0;
-    let d = *X.iter().max().unwrap() as u128 - '0' as u128;
-    let 
+    let d = X.iter().max().unwrap().to_digit(10).unwrap() as i128;
+    let X = X
+        .iter()
+        .map(|&c| c.to_digit(10).unwrap() as i128)
+        .collect::<Vec<i128>>();
+
     if X.len() == 1 {
         if X[0] <= M {
-
+            echo!(1);
+        } else {
+            echo!(0);
         }
         std::process::exit(0);
     }
-    // for d_i in d + 1.. {
-    //     let mut y = 0;
-    //     for x_i in 0..X.len() {
-    //         y *= d_i;
-    //         y += X[x_i] as u128 - '0' as u128;
-    //     }
-    //     if y <= M {
-    //         ans += 1;
-    //     } else {
-    //         break;
-    //     }
-    // }
-
-    echo!(ans);
+    let mut left = -1;
+    let mut right = M + 1;
+    while right - left > 1 {
+        let mid = (right + left) / 2;
+        let mut y = 0;
+        for x_i in 0..X.len() {
+            y *= mid;
+            y += X[x_i];
+            if y > M {
+                break;
+            }
+        }
+        if y <= M {
+            left = mid;
+        } else {
+            right = mid;
+        }
+    }
+    echo!(left - d);
 }
