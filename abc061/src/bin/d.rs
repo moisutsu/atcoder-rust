@@ -1,52 +1,3 @@
-# Path to the test file (Liquid template)
-#
-# Variables:
-#
-# - `manifest_dir`: Package directory
-# - `contest`:      Contest ID (e.g. "abc100")
-# - `problem`:      Problem index (e.g. "A", "B")
-#
-# Additional filters:
-#
-# - `kebabcase`: Convert to kebab case (by using the `heck` crate)
-test-suite = "{{ manifest_dir }}/testcases/{{ problem | kebabcase }}.yml"
-#test-suite = "./testcases/{{ contest }}/{{ problem | kebabcase }}.yml"
-
-# Open files with the command (`jq` command)
-#
-# VSCode:
-iopen = '["bash", "-c"] + ["code -a " + .manifest_dir + " && code " + (.paths | map([.src, .test_suite]) | flatten | join(" "))]'
-# Emacs:
-#open = '["emacsclient", "-n"] + (.paths | map([.src, .test_suite]) | flatten)'
-
-[new]
-# Platform
-#
-# - atcoder
-# - codeforces
-# - yukicoder
-platform = "atcoder"
-# Path (Liquid template)
-#
-# Variables:
-#
-# - `contest`:      Contest ID. **May be nil**
-# - `package_name`: Package name
-path = "./{{ contest }}"
-
-[new.template]
-#lockfile = "/path/to/cargo-lock-template.toml"
-
-[new.template.dependencies]
-kind = "inline"
-content = '''
-proconio = { version = "0.3.6", features = ["derive"] }
-itertools = "=0.9.0"
-'''
-
-[new.template.src]
-kind = "inline"
-content = '''
 #[allow(unused_imports)]
 use proconio::fastout;
 use std::{
@@ -57,14 +8,53 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
+macro_rules ! max {($ a : expr $ (, ) * ) => {{$ a } } ; ($ a : expr , $ b : expr $ (, ) * ) => {{std :: cmp :: max ($ a , $ b ) } } ; ($ a : expr , $ ($ rest : expr ) ,+ $ (, ) * ) => {{std :: cmp :: max ($ a , max ! ($ ($ rest ) ,+ ) ) } } ; }
+macro_rules ! chmax {($ base : expr , $ ($ cmps : expr ) ,+ $ (, ) * ) => {{let cmp_max = max ! ($ ($ cmps ) ,+ ) ; if $ base < cmp_max {$ base = cmp_max ; true } else {false } } } ; }
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: i32,
+        N: usize,
+        M: usize,
+        abc: [({usize1}, {usize1}, i128); M],
     };
-    let mut ans = 0;
-    echo!(ans);
+    const NEG_INF: i128 = std::i128::MIN;
+    let mut g = vec![vec![]; N];
+    for &(a, b, c) in &abc {
+        g[a].push((b, c));
+    }
+    let mut dist = vec![NEG_INF; N];
+    let mut inf_flag = false;
+    dist[0] = 0;
+    for n_i in 0..N {
+        let mut update = false;
+        let mut update_n = false;
+        for from in 0..N {
+            if dist[from] == NEG_INF {
+                continue;
+            }
+            for &(to, c) in &g[from] {
+                if chmax!(dist[to], dist[from] + c) {
+                    update = true;
+                    if to == N - 1 {
+                        update_n = true;
+                    }
+                }
+            }
+        }
+        if !update {
+            break;
+        }
+        if n_i == N - 1 && update_n {
+            inf_flag = true;
+        }
+    }
+    echo!(if inf_flag {
+        "inf".to_string()
+    } else {
+        dist[N - 1].to_string()
+    });
 }
 
 #[allow(unused_macros)]
@@ -263,15 +253,3 @@ where
         scanner.parse_next_unwrap()
     }
 }
-'''
-
-#[submit.transpile]
-#kind = "command"
-#args = ["cargo", "equip", "--oneline", "mods", "--rustfmt", "--check", "--bin", "{{ bin_name }}"]
-#language_id = ""
-
-#[submit.via-binary]
-#target = "x86_64-unknown-linux-musl"
-##cross = "cross"
-#strip = "strip"
-##upx = "upx"

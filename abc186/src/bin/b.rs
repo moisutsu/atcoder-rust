@@ -1,52 +1,3 @@
-# Path to the test file (Liquid template)
-#
-# Variables:
-#
-# - `manifest_dir`: Package directory
-# - `contest`:      Contest ID (e.g. "abc100")
-# - `problem`:      Problem index (e.g. "A", "B")
-#
-# Additional filters:
-#
-# - `kebabcase`: Convert to kebab case (by using the `heck` crate)
-test-suite = "{{ manifest_dir }}/testcases/{{ problem | kebabcase }}.yml"
-#test-suite = "./testcases/{{ contest }}/{{ problem | kebabcase }}.yml"
-
-# Open files with the command (`jq` command)
-#
-# VSCode:
-iopen = '["bash", "-c"] + ["code -a " + .manifest_dir + " && code " + (.paths | map([.src, .test_suite]) | flatten | join(" "))]'
-# Emacs:
-#open = '["emacsclient", "-n"] + (.paths | map([.src, .test_suite]) | flatten)'
-
-[new]
-# Platform
-#
-# - atcoder
-# - codeforces
-# - yukicoder
-platform = "atcoder"
-# Path (Liquid template)
-#
-# Variables:
-#
-# - `contest`:      Contest ID. **May be nil**
-# - `package_name`: Package name
-path = "./{{ contest }}"
-
-[new.template]
-#lockfile = "/path/to/cargo-lock-template.toml"
-
-[new.template.dependencies]
-kind = "inline"
-content = '''
-proconio = { version = "0.3.6", features = ["derive"] }
-itertools = "=0.9.0"
-'''
-
-[new.template.src]
-kind = "inline"
-content = '''
 #[allow(unused_imports)]
 use proconio::fastout;
 use std::{
@@ -61,9 +12,15 @@ use std::{
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: i32,
+        H: usize,
+        W: usize,
+        As: [[usize; W]; H],
     };
-    let mut ans = 0;
+    let min_value = *As.iter().map(|v| v.iter().min().unwrap()).min().unwrap();
+    let ans = As
+        .iter()
+        .map(|v| v.iter().map(|&e| e - min_value).sum::<usize>())
+        .sum::<usize>();
     echo!(ans);
 }
 
@@ -263,15 +220,3 @@ where
         scanner.parse_next_unwrap()
     }
 }
-'''
-
-#[submit.transpile]
-#kind = "command"
-#args = ["cargo", "equip", "--oneline", "mods", "--rustfmt", "--check", "--bin", "{{ bin_name }}"]
-#language_id = ""
-
-#[submit.via-binary]
-#target = "x86_64-unknown-linux-musl"
-##cross = "cross"
-#strip = "strip"
-##upx = "upx"
