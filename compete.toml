@@ -189,7 +189,7 @@ where
         this(A::read_from_scanner(scanner))
     }
 }
-enum Scanner {
+pub enum Scanner {
     Uninited,
     Once {
         words: SplitWhitespace<'static>,
