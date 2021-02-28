@@ -26,27 +26,20 @@ fn main() {
         AB: [(i128, i128); M],
     };
     let mut ans = true;
-    let mut n = N;
-    for i in 0..AB.len() {
-        if i == 0 {
-            n -= AB[i].0;
-        } else {
-            n -= AB[i].0 - AB[i - 1].1;
-        }
-        if n <= 0 {
+    let mut cur = N;
+    let mut time = 0;
+    for (A, B) in AB {
+        cur -= A - time;
+        if cur <= 0 {
             ans = false;
             break;
         }
-        n += AB[i].1 - AB[i].0;
-        if n > N {
-            n = N;
-        }
-        if i == AB.len() - 1 {
-            n -= T - AB[i].1;
-            if N <= 0 {
-                ans = false;
-            }
-        }
+        cur = std::cmp::min(N, cur + B - A);
+        time = B;
+    }
+    cur -= T - time;
+    if cur <= 0 {
+        ans = false;
     }
     echo!(YesNo!(ans));
 }
