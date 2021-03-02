@@ -29,5 +29,6 @@ fn main() {
     input! {
         V: i32, T: i32, S: i32, D: i32
     };
+    let a = V;
     echo!(YesNo!(!(V * T <= D && D <= V * S)));
 }

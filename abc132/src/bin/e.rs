@@ -32,16 +32,17 @@ fn main() {
     dist[S] = 0;
     heap.push(Reverse((dist[S], S)));
     while heap.len() != 0 {
-        let Reverse((d, v)) = heap.pop().unwrap();
-        if d > dist[v] {
+        let Reverse((d, from)) = heap.pop().unwrap();
+        if d > dist[from] {
             continue;
         }
-        for &e in &g[v] {
-            if chmin!(dist[e], dist[v] + 1) {
-                heap.push(Reverse((dist[e], e)));
+        for &to in &g[from] {
+            if chmin!(dist[to], dist[from] + 1) {
+                heap.push(Reverse((dist[to], to)));
             }
         }
     }
+    
 }
 
 #[allow(unused_macros)]
