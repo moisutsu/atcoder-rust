@@ -1,0 +1,38 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      5
+      Takahashikun is not an eel.
+    out: |
+      1
+  - name: sample2
+    in: |
+      5
+      TAKAHASHIKUN loves TAKAHASHIKUN and takahashikun.
+    out: |
+      3
+  - name: sample3
+    in: |
+      6
+      He is not takahasikun but Takahashikun.
+    out: |
+      1
+  - name: sample4
+    in: |
+      1
+      takahashikunTAKAHASHIKUNtakahashikun.
+    out: |
+      0
+  - name: sample5
+    in: |
+      18
+      You should give Kabayaki to Takahashikun on July twenty seventh if you suspect that he is an eel.
+    out: |
+      1
+
+extend: []

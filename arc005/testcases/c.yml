@@ -1,0 +1,58 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      4 5
+      s####
+      ....#
+      #####
+      #...g
+    out: |
+      YES
+  - name: sample2
+    in: |
+      4 4
+      ...s
+      ....
+      ....
+      .g..
+    out: |
+      YES
+  - name: sample3
+    in: |
+      10 10
+      s.........
+      #########.
+      #.......#.
+      #..####.#.
+      ##....#.#.
+      #####.#.#.
+      g##.#.#.#.
+      ###.#.#.#.
+      ###.#.#.#.
+      #.....#...
+    out: |
+      YES
+  - name: sample4
+    in: |
+      6 6
+      .....s
+      ###...
+      ###...
+      ######
+      ...###
+      g.####
+    out: |
+      YES
+  - name: sample5
+    in: |
+      1 10
+      s..####..g
+    out: |
+      NO
+
+extend: []

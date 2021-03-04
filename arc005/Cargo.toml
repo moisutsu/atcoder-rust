@@ -1,0 +1,33 @@
+[package]
+name = "arc005"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "arc005-a", problem = { platform = "atcoder", contest = "arc005", index = "A", url = "https://atcoder.jp/contests/arc005/tasks/arc005_1" } }
+b = { name = "arc005-b", problem = { platform = "atcoder", contest = "arc005", index = "B", url = "https://atcoder.jp/contests/arc005/tasks/arc005_2" } }
+c = { name = "arc005-c", problem = { platform = "atcoder", contest = "arc005", index = "C", url = "https://atcoder.jp/contests/arc005/tasks/arc005_3" } }
+d = { name = "arc005-d", problem = { platform = "atcoder", contest = "arc005", index = "D", url = "https://atcoder.jp/contests/arc005/tasks/arc005_4" } }
+
+[[bin]]
+name = "arc005-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc005-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc005-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc005-d"
+path = "src/bin/d.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
