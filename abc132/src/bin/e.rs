@@ -1,5 +1,6 @@
 #[allow(unused_imports)]
 use proconio::fastout;
+use std::collections::VecDeque;
 use std::{
     cell::RefCell,
     fmt::Debug,
@@ -7,10 +8,6 @@ use std::{
     rc::Rc,
     str::{FromStr, SplitWhitespace},
 };
-use std::{cmp::Reverse, collections::BinaryHeap};
-
-macro_rules ! min {($ a : expr $ (, ) * ) => {{$ a } } ; ($ a : expr , $ b : expr $ (, ) * ) => {{std :: cmp :: min ($ a , $ b ) } } ; ($ a : expr , $ ($ rest : expr ) ,+ $ (, ) * ) => {{std :: cmp :: min ($ a , min ! ($ ($ rest ) ,+ ) ) } } ; }
-macro_rules ! chmin {($ base : expr , $ ($ cmps : expr ) ,+ $ (, ) * ) => {{let cmp_min = min ! ($ ($ cmps ) ,+ ) ; if $ base > cmp_min {$ base = cmp_min ; true } else {false } } } ; }
 
 #[fastout]
 #[allow(non_snake_case)]
@@ -22,27 +19,32 @@ fn main() {
         S: {usize1},
         T: {usize1}
     };
-    const INF: i128 = 1 << 60;
+    const INF: usize = 1 << 60;
     let mut g = vec![vec![]; N];
     for &(u, v) in &uv {
         g[u].push(v);
     }
-    let mut dist = vec![INF; N];
-    let mut heap = BinaryHeap::new();
-    dist[S] = 0;
-    heap.push(Reverse((dist[S], S)));
-    while heap.len() != 0 {
-        let Reverse((d, from)) = heap.pop().unwrap();
-        if d > dist[from] {
-            continue;
-        }
+    let mut dist = vec![vec![INF; 3]; N];
+    dist[S][0] = 0;
+    let mut q = VecDeque::new();
+    q.push_back((S, 0));
+    while q.len() != 0 {
+        let (from, mo) = q.pop_front().unwrap();
         for &to in &g[from] {
-            if chmin!(dist[to], dist[from] + 1) {
-                heap.push(Reverse((dist[to], to)));
+            let cur_dist = dist[from][mo];
+            let mo = (mo + 1) % 3;
+            if dist[to][mo] != INF {
+                continue;
             }
+            dist[to][mo] = cur_dist + 1;
+            q.push_back((to, mo));
         }
     }
-    
+    echo!(if dist[T][0] == INF {
+        "-1".to_string()
+    } else {
+        (dist[T][0] / 3).to_string()
+    });
 }
 
 #[allow(unused_macros)]
