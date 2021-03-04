@@ -17,8 +17,9 @@ fn main() {
         es: [(usize, usize); E],
     };
     let mut dinitz = Dinitz::new(N + 1);
-    for (from, to) in es {
-        dinitz.add_edge(from, to, 1);
+    for (a, b) in es {
+        dinitz.add_edge(a, b, 1);
+        dinitz.add_edge(b, a, 1)
     }
     for p in ps {
         dinitz.add_edge(p, N, 1);
