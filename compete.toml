@@ -48,6 +48,8 @@ itertools = "=0.9.0"
 kind = "inline"
 content = '''
 #[allow(unused_imports)]
+use itertools::Itertools;
+#[allow(unused_imports)]
 use proconio::fastout;
 use std::{
     cell::RefCell,
