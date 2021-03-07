@@ -51,8 +51,11 @@ content = '''
 use itertools::*;
 #[allow(unused_imports)]
 use proconio::fastout;
+#[allow(unused_imports)]
 use std::{
     cell::RefCell,
+    cmp::{max, min},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
     fmt::Debug,
     io::{self, BufRead, Read},
     rc::Rc,
