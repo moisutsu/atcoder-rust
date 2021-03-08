@@ -13,40 +13,24 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
-const ADJ_4: [(usize, usize); 4] = [(1, 0), (0, 1), (!0, 0), (0, !0)];
-
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        H: usize, W: usize,
-        ss: [{chars}; H],
+        N: usize, M: usize,
+        A: [[usize; M]; N]
     };
-    let mut dist = vec![vec![-1; W]; H];
-    let mut q = VecDeque::new();
-    q.push_back((0usize, 0usize));
-    while let Some((x, y)) = q.pop_front() {
-        for &(mx, my) in ADJ_4.iter() {
-            let (cx, cy) = (x.wrapping_add(mx), y.wrapping_add(my));
-            if cx >= W || cy >= H {
-                continue;
+    let mut ans = 0;
+    for i in 0..M - 1 {
+        for j in i + 1..M {
+            let mut score = 0;
+            for n_i in 0..N {
+                score += max(A[n_i][i], A[n_i][j]);
             }
-            if ss[cy][cx] == '#' || dist[cy][cx] != -1 {
-                continue;
-            }
-            dist[cy][cx] = dist[y][x] + 1;
-            q.push_back((cx, cy));
+            ans = max(ans, score);
         }
     }
-    if dist[H - 1][W - 1] == -1 {
-        echo!(-1);
-        return;
-    }
-    let white_count = ss
-        .iter()
-        .map(|s| s.iter().filter(|&&c| c == '.').count() as i128)
-        .sum::<i128>();
-    echo!(white_count - dist[H - 1][W - 1] - 2);
+    echo!(ans);
 }
 
 #[allow(unused_macros)]

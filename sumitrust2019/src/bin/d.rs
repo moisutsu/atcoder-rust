@@ -13,40 +13,35 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
-const ADJ_4: [(usize, usize); 4] = [(1, 0), (0, 1), (!0, 0), (0, !0)];
-
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        H: usize, W: usize,
-        ss: [{chars}; H],
+        _N: usize,
+        S: {chars},
     };
-    let mut dist = vec![vec![-1; W]; H];
-    let mut q = VecDeque::new();
-    q.push_back((0usize, 0usize));
-    while let Some((x, y)) = q.pop_front() {
-        for &(mx, my) in ADJ_4.iter() {
-            let (cx, cy) = (x.wrapping_add(mx), y.wrapping_add(my));
-            if cx >= W || cy >= H {
+    let S = S
+        .into_iter()
+        .map(|c| c.to_digit(10).unwrap() as i32)
+        .collect_vec();
+    let mut ans = 0;
+    for (mut i, mut j, k) in iproduct!(0..10, 0..10, 0..10) {
+        for &n in &S {
+            if n == i {
+                i = -1;
                 continue;
             }
-            if ss[cy][cx] == '#' || dist[cy][cx] != -1 {
+            if i == -1 && n == j {
+                j = -1;
                 continue;
             }
-            dist[cy][cx] = dist[y][x] + 1;
-            q.push_back((cx, cy));
+            if j == -1 && n == k {
+                ans += 1;
+                break;
+            }
         }
     }
-    if dist[H - 1][W - 1] == -1 {
-        echo!(-1);
-        return;
-    }
-    let white_count = ss
-        .iter()
-        .map(|s| s.iter().filter(|&&c| c == '.').count() as i128)
-        .sum::<i128>();
-    echo!(white_count - dist[H - 1][W - 1] - 2);
+    echo!(ans);
 }
 
 #[allow(unused_macros)]

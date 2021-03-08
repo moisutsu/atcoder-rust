@@ -13,40 +13,69 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
-const ADJ_4: [(usize, usize); 4] = [(1, 0), (0, 1), (!0, 0), (0, !0)];
+use std::ops::*;
+fn is_prime<T>(x: T) -> bool
+where
+    T: Add<Output = T>
+        + Sub<Output = T>
+        + Mul<Output = T>
+        + Div<Output = T>
+        + Rem<Output = T>
+        + AddAssign
+        + PartialEq
+        + PartialOrd
+        + Copy,
+{
+    let zero = x - x;
+    if x == zero {
+        return false;
+    }
+    let one = x / x;
+    if x == one {
+        return false;
+    }
+    let mut i = one + one;
+    while i * i <= x {
+        if x % i == zero {
+            return false;
+        }
+        i += one;
+    }
+    true
+}
+
+macro_rules! accumulate {
+    ($ v : expr ) => {{
+        let mut accumulate = vec![0];
+        accumulate.extend(
+            $v.iter()
+                .scan(0, |state, &x| {
+                    *state += x;
+                    Some(*state)
+                })
+                .collect::<Vec<_>>(),
+        );
+        accumulate
+    }};
+}
 
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        H: usize, W: usize,
-        ss: [{chars}; H],
+        Q: usize,
+        lr: [(usize, usize); Q],
     };
-    let mut dist = vec![vec![-1; W]; H];
-    let mut q = VecDeque::new();
-    q.push_back((0usize, 0usize));
-    while let Some((x, y)) = q.pop_front() {
-        for &(mx, my) in ADJ_4.iter() {
-            let (cx, cy) = (x.wrapping_add(mx), y.wrapping_add(my));
-            if cx >= W || cy >= H {
-                continue;
-            }
-            if ss[cy][cx] == '#' || dist[cy][cx] != -1 {
-                continue;
-            }
-            dist[cy][cx] = dist[y][x] + 1;
-            q.push_back((cx, cy));
+    let mut primes = vec![0; 100000];
+    for i in 1..=100000 {
+        if is_prime(i) && is_prime((i + 1) / 2) {
+            primes[i - 1] += 1;
         }
     }
-    if dist[H - 1][W - 1] == -1 {
-        echo!(-1);
-        return;
+    let acc = accumulate!(primes);
+    for (l, r) in lr {
+        echo!(acc[r] - acc[l - 1]);
     }
-    let white_count = ss
-        .iter()
-        .map(|s| s.iter().filter(|&&c| c == '.').count() as i128)
-        .sum::<i128>();
-    echo!(white_count - dist[H - 1][W - 1] - 2);
 }
 
 #[allow(unused_macros)]

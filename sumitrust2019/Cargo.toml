@@ -1,0 +1,43 @@
+[package]
+name = "sumitrust2019"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "sumitrust2019-a", problem = { platform = "atcoder", contest = "sumitrust2019", index = "A", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_a" } }
+b = { name = "sumitrust2019-b", problem = { platform = "atcoder", contest = "sumitrust2019", index = "B", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_b" } }
+c = { name = "sumitrust2019-c", problem = { platform = "atcoder", contest = "sumitrust2019", index = "C", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_c" } }
+d = { name = "sumitrust2019-d", problem = { platform = "atcoder", contest = "sumitrust2019", index = "D", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_d" } }
+e = { name = "sumitrust2019-e", problem = { platform = "atcoder", contest = "sumitrust2019", index = "E", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_e" } }
+f = { name = "sumitrust2019-f", problem = { platform = "atcoder", contest = "sumitrust2019", index = "F", url = "https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_f" } }
+
+[[bin]]
+name = "sumitrust2019-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "sumitrust2019-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "sumitrust2019-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "sumitrust2019-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "sumitrust2019-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "sumitrust2019-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"

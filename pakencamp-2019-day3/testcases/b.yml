@@ -1,0 +1,40 @@
+---
+type: Batch
+timelimit: 1s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      1
+      black
+    out: |
+      black
+  - name: sample2
+    in: |
+      7
+      black
+      white
+      white
+      white
+      white
+      white
+      black
+    out: |
+      white
+  - name: sample3
+    in: |
+      9
+      black
+      black
+      black
+      black
+      black
+      black
+      black
+      black
+      black
+    out: |
+      black
+
+extend: []

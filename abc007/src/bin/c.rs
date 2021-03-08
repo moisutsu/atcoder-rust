@@ -19,34 +19,32 @@ const ADJ_4: [(usize, usize); 4] = [(1, 0), (0, 1), (!0, 0), (0, !0)];
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        H: usize, W: usize,
-        ss: [{chars}; H],
+        R: usize, C: usize,
+        s: ({usize1}, {usize1}),
+        g: ({usize1}, {usize1}),
+        c: [{chars}; R],
     };
-    let mut dist = vec![vec![-1; W]; H];
+    let mut dist = vec![vec![-1; C]; R];
     let mut q = VecDeque::new();
-    q.push_back((0usize, 0usize));
-    while let Some((x, y)) = q.pop_front() {
+    q.push_back(s);
+    dist[s.0][s.1] = 0;
+    while let Some((y, x)) = q.pop_front() {
         for &(mx, my) in ADJ_4.iter() {
             let (cx, cy) = (x.wrapping_add(mx), y.wrapping_add(my));
-            if cx >= W || cy >= H {
+            if cx >= C || cy >= R {
                 continue;
             }
-            if ss[cy][cx] == '#' || dist[cy][cx] != -1 {
+            if c[cy][cx] == '#' || dist[cy][cx] != -1 {
                 continue;
+            }
+            if (cy, cx) == g {
+                echo!(dist[y][x] + 1);
+                return;
             }
             dist[cy][cx] = dist[y][x] + 1;
-            q.push_back((cx, cy));
+            q.push_back((cy, cx));
         }
     }
-    if dist[H - 1][W - 1] == -1 {
-        echo!(-1);
-        return;
-    }
-    let white_count = ss
-        .iter()
-        .map(|s| s.iter().filter(|&&c| c == '.').count() as i128)
-        .sum::<i128>();
-    echo!(white_count - dist[H - 1][W - 1] - 2);
 }
 
 #[allow(unused_macros)]

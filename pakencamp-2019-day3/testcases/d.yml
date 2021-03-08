@@ -1,0 +1,48 @@
+---
+type: Batch
+timelimit: 1s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      1
+      B
+      R
+      #
+      W
+      B
+    out: |
+      3
+  - name: sample2
+    in: |
+      3
+      WWR
+      #RW
+      BW#
+      ##B
+      RBR
+    out: |
+      10
+  - name: sample3
+    in: |
+      8
+      RRRRRRRR
+      ########
+      BBBBBBBB
+      RRRRRRRR
+      WWWWWWWW
+    out: |
+      28
+  - name: sample4
+    in: |
+      7
+      BR#WB#R
+      RWW#WRB
+      ##WBR#W
+      WB#B#RW
+      BRW##BB
+    out: |
+      21
+
+extend: []
