@@ -65,11 +65,7 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        N: i32,
-    };
-    let mut ans = 0;
-    echo!(ans);
+    input! {};
 }
 
 #[allow(unused_macros)]
@@ -172,7 +168,7 @@ pub fn bytes(s: String) -> Vec<u8> {
 
 #[inline]
 pub fn chars(s: String) -> Vec<char> {
-    s.chars().collect::<Vec<char>>()
+    s.chars().collect()
 }
 
 #[doc(hidden)]
