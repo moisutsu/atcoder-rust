@@ -13,33 +13,10 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
-macro_rules ! min {($ a : expr $ (, ) * ) => {{$ a } } ; ($ a : expr , $ b : expr $ (, ) * ) => {{std :: cmp :: min ($ a , $ b ) } } ; ($ a : expr , $ ($ rest : expr ) ,+ $ (, ) * ) => {{std :: cmp :: min ($ a , min ! ($ ($ rest ) ,+ ) ) } } ; }
-trait Joins {
-    fn joins(&self, sep: &str) -> String;
-}
-impl<T: std::string::ToString + Copy> Joins for [T] {
-    fn joins(&self, sep: &str) -> String {
-        self.iter()
-            .map(|&x| x.to_string())
-            .collect::<Vec<_>>()
-            .join(sep)
-    }
-}
-
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        N: usize, X: {usize1}, Y: {usize1},
-    };
-    let mut dists = vec![0; N];
-    for i in 0..N - 1 {
-        for j in i + 1..N {
-            let dist = min!(j - i, max(i, X) - min(i, X) + max(j, Y) - min(j, Y) + 1);
-            dists[dist] += 1;
-        }
-    }
-    echo!(dists[1..].joins("\n"));
+    input! {};
 }
 
 #[allow(unused_macros)]
