@@ -16,13 +16,7 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        N: usize, M: usize, Q: usize,
-        abcd: [(usize, usize, usize, usize); Q]
-    };
-    for n_i in 0..N {
-        
-    }
+    input! {};
 }
 
 #[allow(unused_macros)]

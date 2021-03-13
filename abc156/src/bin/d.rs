@@ -13,16 +13,63 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
+const MOD: i128 = 1_000_000_007;
+
+macro_rules! mod_pow {
+    ($ a : expr , $ n : expr , $ mod : expr ) => {{
+        let mut ret = 1;
+        let mut a = $a;
+        let mut n = $n;
+        while n > 0 {
+            if n & 1 == 1 {
+                ret = ret * a % $mod;
+            }
+            a = a * a % $mod;
+            n >>= 1;
+        }
+        ret
+    }};
+}
+
+macro_rules! mod_inv {
+    ($ a : expr , $ mod : expr ) => {{
+        let (mut a, mut b, mut u, mut v) = ($a, $mod, 1, 0);
+        while b != 0 {
+            let t = a / b;
+            a -= t * b;
+            u -= t * v;
+            let tmp = b;
+            b = a;
+            a = tmp;
+            let tmp = v;
+            v = u;
+            u = tmp;
+        }
+        u %= $mod;
+        if u < 0 {
+            u += $mod;
+        }
+        u
+    }};
+}
+
+fn mod_conv(n: i128, k: i128) -> i128 {
+    let mut total = 1;
+    for k_i in 1..=k {
+        total *= (n - k_i + 1) * mod_inv!(k_i, MOD);
+        total %= MOD;
+    }
+    total
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize, M: usize, Q: usize,
-        abcd: [(usize, usize, usize, usize); Q]
+        n: i128, a: i128, b: i128,
     };
-    for n_i in 0..N {
-        
-    }
+    let ans = mod_pow!(2, n, MOD) - mod_conv(n, a) - mod_conv(n, b);
+    echo!(ans);
 }
 
 #[allow(unused_macros)]
@@ -76,7 +123,7 @@ macro_rules! input_inner {
 #[macro_export]
 macro_rules! read {
     (from $scanner:ident { [$tt:tt] }) => {
-        $crate::read!(from $scanner { [$tt; $crate::read!(from $scanner { usize })] })
+        $crate::read!(from $scanner { [$tt; $crate::read!(from $scanner { i128 })] })
     };
     (from $scanner:ident  { [$tt:tt; $n:expr] }) => {
         (0..$n).map(|_| $crate::read!(from $scanner { $tt })).collect::<Vec<_>>()
@@ -114,7 +161,7 @@ macro_rules! readable {
 }
 
 #[inline]
-pub fn usize1(n: usize) -> usize {
+pub fn i1281(n: i128) -> i128 {
     n - 1
 }
 
