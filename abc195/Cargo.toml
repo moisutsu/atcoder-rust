@@ -1,0 +1,43 @@
+[package]
+name = "abc195"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc195-a", problem = { platform = "atcoder", contest = "abc195", index = "A", url = "https://atcoder.jp/contests/abc195/tasks/abc195_a" } }
+b = { name = "abc195-b", problem = { platform = "atcoder", contest = "abc195", index = "B", url = "https://atcoder.jp/contests/abc195/tasks/abc195_b" } }
+c = { name = "abc195-c", problem = { platform = "atcoder", contest = "abc195", index = "C", url = "https://atcoder.jp/contests/abc195/tasks/abc195_c" } }
+d = { name = "abc195-d", problem = { platform = "atcoder", contest = "abc195", index = "D", url = "https://atcoder.jp/contests/abc195/tasks/abc195_d" } }
+e = { name = "abc195-e", problem = { platform = "atcoder", contest = "abc195", index = "E", url = "https://atcoder.jp/contests/abc195/tasks/abc195_e" } }
+f = { name = "abc195-f", problem = { platform = "atcoder", contest = "abc195", index = "F", url = "https://atcoder.jp/contests/abc195/tasks/abc195_f" } }
+
+[[bin]]
+name = "abc195-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc195-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc195-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc195-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc195-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc195-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.6", features = ["derive"] }
+itertools = "=0.9.0"
