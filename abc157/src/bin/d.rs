@@ -1,29 +1,22 @@
 #[allow(unused_imports)]
-use ::{
-    itertools::*,
-    proconio::fastout,
-    std::{
-        cell::RefCell,
-        cmp::{max, min},
-        collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
-        fmt::Debug,
-        io::{self, BufRead, Read},
-        rc::Rc,
-        str::{FromStr, SplitWhitespace},
-    },
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::fastout;
+#[allow(unused_imports)]
+use std::{
+    cell::RefCell,
+    cmp::{max, min},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+    fmt::Debug,
+    io::{self, BufRead, Read},
+    rc::Rc,
+    str::{FromStr, SplitWhitespace},
 };
 
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        N: usize,
-        S: {chars},
-        X: {chars}
-    };
-    let mut dp = vec![false; 7];
-    dp[0] = true;
-    for i in 0..N {}
+    input! {};
 }
 
 #[allow(unused_macros)]

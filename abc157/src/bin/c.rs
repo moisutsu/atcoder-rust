@@ -1,29 +1,51 @@
 #[allow(unused_imports)]
-use ::{
-    itertools::*,
-    proconio::fastout,
-    std::{
-        cell::RefCell,
-        cmp::{max, min},
-        collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
-        fmt::Debug,
-        io::{self, BufRead, Read},
-        rc::Rc,
-        str::{FromStr, SplitWhitespace},
-    },
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::fastout;
+#[allow(unused_imports)]
+use std::{
+    cell::RefCell,
+    cmp::{max, min},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+    fmt::Debug,
+    io::{self, BufRead, Read},
+    rc::Rc,
+    str::{FromStr, SplitWhitespace},
 };
+
+trait StrToVecChar {
+    fn to_vec_char(&self) -> Vec<char>;
+}
+impl StrToVecChar for str {
+    fn to_vec_char(&self) -> Vec<char> {
+        self.chars().collect::<Vec<char>>()
+    }
+}
 
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize,
-        S: {chars},
-        X: {chars}
+        N: u32,
+        M: usize,
+        sc: [({usize1}, char); M],
     };
-    let mut dp = vec![false; 7];
-    dp[0] = true;
-    for i in 0..N {}
+    let (mut min_value, max_value) = (10i32.pow(N - 1), 10i32.pow(N));
+    if N == 1 {
+        min_value = 0;
+    }
+    let mut ans = -1;
+    'outer: for n in min_value..max_value {
+        let n_v = n.to_string().to_vec_char();
+        for &(s, c) in &sc {
+            if n_v[s] != c {
+                continue 'outer;
+            }
+        }
+        ans = n;
+        break;
+    }
+    echo!(ans);
 }
 
 #[allow(unused_macros)]
