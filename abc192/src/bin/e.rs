@@ -1,8 +1,64 @@
 #[allow(unused_imports)]
-use proconio::marker::*;
-use proconio::*;
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::fastout;
+use std::cmp::Reverse;
+#[allow(unused_imports)]
+use std::{
+    cell::RefCell,
+    cmp::{max, min},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+    fmt::Debug,
+    io::{self, BufRead, Read},
+    rc::Rc,
+    str::{FromStr, SplitWhitespace},
+};
+
+const INF: i128 = 1 << 60;
+
+macro_rules ! min {($ a : expr $ (, ) * ) => {{$ a } } ; ($ a : expr , $ b : expr $ (, ) * ) => {{std :: cmp :: min ($ a , $ b ) } } ; ($ a : expr , $ ($ rest : expr ) ,+ $ (, ) * ) => {{std :: cmp :: min ($ a , min ! ($ ($ rest ) ,+ ) ) } } ; }
+macro_rules ! chmin {($ base : expr , $ ($ cmps : expr ) ,+ $ (, ) * ) => {{let cmp_min = min ! ($ ($ cmps ) ,+ ) ; if $ base > cmp_min {$ base = cmp_min ; true } else {false } } } ; }
+
+#[fastout]
+#[allow(non_snake_case)]
+fn main() {
+    input! {
+        N: usize, M: usize, X: {usize1}, Y: {usize1},
+        abtk: [({usize1}, {usize1}, i128, i128); M]
+    };
+    let mut g = vec![vec![]; N];
+    for &(a, b, t, k) in &abtk {
+        g[a].push((b, t, k));
+        g[b].push((a, t, k));
+    }
+    let mut dist = vec![INF; N];
+    dist[X] = 0;
+    let mut heap = BinaryHeap::new();
+    heap.push(Reverse((dist[X], X)));
+    while let Some(Reverse((d, from))) = heap.pop() {
+        if d > dist[from] {
+            continue;
+        }
+        for &(to, t, k) in &g[from] {
+            let wait = if dist[from] % k == 0 {
+                0
+            } else {
+                k - dist[from] % k
+            };
+            if chmin!(dist[to], dist[from] + wait + t) {
+                heap.push(Reverse((dist[to], to)));
+            }
+        }
+    }
+    if dist[Y] == INF {
+        echo!(-1);
+    } else {
+        echo!(dist[Y]);
+    }
+}
 
 #[allow(unused_macros)]
+#[macro_export]
 macro_rules! echo {
     ($($e:expr),*) => {
         let mut s = Vec::new();
@@ -13,56 +69,187 @@ macro_rules! echo {
     }
 }
 
-use std::collections::BinaryHeap;
-
-#[derive(Clone)]
-struct Edge {
-    to: usize,
-    t: usize,
-    k: usize,
+#[macro_export]
+macro_rules! input {
+    (from $scanner:ident; $($tt:tt)*) => {
+        $crate::input_inner!(@scanner($scanner), @tts($($tt)*))
+    };
+    ($($tt:tt)*) => {
+        let __scanner = $crate::DEFAULT_SCANNER.with(|__scanner| __scanner.clone());
+        let mut __scanner_ref = __scanner.borrow_mut();
+        if let $crate::Scanner::Uninited = *__scanner_ref {
+            *__scanner_ref = $crate::Scanner::stdin_auto().unwrap();
+        }
+        $crate::input_inner!(@scanner(__scanner_ref), @tts($($tt)*));
+        ::std::mem::drop(__scanner_ref);
+        ::std::mem::drop(__scanner);
+    };
 }
 
-const INF: usize = std::usize::MAX;
-
-#[fastout]
-#[allow(non_snake_case)]
-fn main() {
-    input! {
-        N: usize,
-        M: usize,
-        X: Usize1,
-        Y: Usize1,
-        ABTK: [(Usize1, Usize1, usize, usize); M],
+#[macro_export]
+macro_rules! input_inner {
+    (@scanner($scanner:ident), @tts()) => {};
+    (@scanner($scanner:ident), @tts(mut $single_tt_pat:tt : $readable:tt)) => {
+        let mut $single_tt_pat = $crate::read!(from $scanner { $readable });
     };
-    let mut dist = vec![INF; N];
-    dist[X] = 0;
-    let mut g = vec![vec![]; N];
-    for &(A, B, T, K) in ABTK.iter() {
-        g[A].push(Edge { to: B, t: T, k: K });
-        g[B].push(Edge { to: A, t: T, k: K });
+    (@scanner($scanner:ident), @tts($single_tt_pat:tt : $readable:tt)) => {
+        let $single_tt_pat = $crate::read!(from $scanner { $readable });
+    };
+    (@scanner($scanner:ident), @tts(mut $single_tt_pat:tt : $readable:tt, $($rest:tt)*)) => {
+        $crate::input_inner!(@scanner($scanner), @tts(mut $single_tt_pat: $readable));
+        $crate::input_inner!(@scanner($scanner), @tts($($rest)*));
+    };
+    (@scanner($scanner:ident), @tts($single_tt_pat:tt : $readable:tt, $($rest:tt)*)) => {
+        $crate::input_inner!(@scanner($scanner), @tts($single_tt_pat: $readable));
+        $crate::input_inner!(@scanner($scanner), @tts($($rest)*));
+    };
+}
+
+#[macro_export]
+macro_rules! read {
+    (from $scanner:ident { [$tt:tt] }) => {
+        $crate::read!(from $scanner { [$tt; $crate::read!(from $scanner { usize })] })
+    };
+    (from $scanner:ident  { [$tt:tt; $n:expr] }) => {
+        (0..$n).map(|_| $crate::read!(from $scanner { $tt })).collect::<Vec<_>>()
+    };
+    (from $scanner:ident { ($($tt:tt),+) }) => {
+        ($($crate::read!(from $scanner { $tt })),*)
+    };
+    (from $scanner:ident { { $f:expr } }) => {
+        $crate::FnOnceExt::<_>::call_once_from_reader($f, &mut $scanner)
+    };
+    (from $scanner:ident { $ty:ty }) => {
+        <$ty as $crate::Readable>::read_from_scanner(&mut $scanner)
+    };
+}
+
+#[macro_export]
+macro_rules! readable {
+    ($name:ident; |$scanner:ident| { $($body:tt)* }) => {
+        $crate::readable!($name; |$scanner| -> () { $($body)* });
+    };
+    ($name:ident; |$scanner:ident| $expr:expr) => {
+        $crate::readable!($name; |$scanner| -> () { $expr });
+    };
+    ($name:ident; |$scanner:ident| -> $output:ty { $($body:tt)* }) => {
+        enum $name {}
+
+        impl $crate::Readable for $name {
+            type Output = $output;
+
+            fn read_from_scanner(mut $scanner: &mut $crate::Scanner) -> $output {
+                $($body)*
+            }
+        }
+    };
+}
+
+#[inline]
+pub fn usize1(n: usize) -> usize {
+    n - 1
+}
+
+#[inline]
+pub fn bytes(s: String) -> Vec<u8> {
+    s.into()
+}
+
+#[inline]
+pub fn chars(s: String) -> Vec<char> {
+    s.chars().collect()
+}
+
+#[doc(hidden)]
+trait FnOnceExt<A> {
+    type Output;
+    fn call_once_from_reader(this: Self, scanner: &mut Scanner) -> Self::Output;
+}
+
+impl<A, O, F> FnOnceExt<A> for F
+where
+    A: FromStr,
+    A::Err: Debug,
+    F: FnOnce(A) -> O,
+{
+    type Output = O;
+
+    #[inline]
+    fn call_once_from_reader(this: Self, scanner: &mut Scanner) -> O {
+        this(A::read_from_scanner(scanner))
     }
-    let mut q = BinaryHeap::new();
-    q.push((0, X));
-    while let Some((cost, pos)) = q.pop() {
-        if pos == Y {
-            break;
-        }
-        if cost > dist[pos] {
-            continue;
-        }
-        for edge in &g[pos] {
-            let next;
-            if cost % edge.k == 0 {
-                next = (cost + edge.t, edge.to);
-            } else {
-                next = (cost + edge.k - (cost % edge.k) + edge.t, edge.to)
-            }
-            if next.0 <= dist[next.1] {
-                q.push(next);
-                dist[next.1] = next.0;
-            }
+}
+pub enum Scanner {
+    Uninited,
+    Once {
+        words: SplitWhitespace<'static>,
+    },
+    Lines {
+        rdr: Box<dyn BufRead>,
+        words: SplitWhitespace<'static>,
+    },
+}
+
+impl Scanner {
+    fn stdin_auto() -> io::Result<Self> {
+        if cfg!(debug_assertions) {
+            Ok(Self::lines(Box::leak(Box::new(io::stdin())).lock()))
+        } else {
+            Self::once(io::stdin())
         }
     }
 
-    echo!(if dist[Y] == INF { -1 } else { dist[Y] as i128 });
+    fn once<R: Read>(mut rdr: R) -> io::Result<Self> {
+        let mut buf = String::with_capacity(1024);
+        rdr.read_to_string(&mut buf)?;
+        let words = Box::leak(buf.into_boxed_str()).split_whitespace();
+        Ok(Self::Once { words })
+    }
+
+    fn lines<R: BufRead + 'static>(rdr: R) -> Self {
+        Self::Lines {
+            rdr: Box::new(rdr),
+            words: "".split_whitespace(),
+        }
+    }
+
+    fn parse_next_unwrap<T: FromStr>(&mut self) -> T
+    where
+        T::Err: Debug,
+    {
+        match self {
+            Self::Uninited => None,
+            Self::Once { words } => words.next(),
+            Self::Lines { rdr, words } => words.next().or_else(|| {
+                let mut line = "".to_owned();
+                rdr.read_line(&mut line).unwrap();
+                *words = Box::leak(line.into_boxed_str()).split_whitespace();
+                words.next()
+            }),
+        }
+        .expect("reached EOF")
+        .parse()
+        .unwrap()
+    }
+}
+
+thread_local! {
+    static DEFAULT_SCANNER: Rc<RefCell<Scanner>> = Rc::new(RefCell::new(Scanner::Uninited));
+}
+
+trait Readable {
+    type Output;
+
+    fn read_from_scanner(scanner: &mut Scanner) -> Self::Output;
+}
+
+impl<T: FromStr> Readable for T
+where
+    T::Err: Debug,
+{
+    type Output = Self;
+
+    fn read_from_scanner(scanner: &mut Scanner) -> Self {
+        scanner.parse_next_unwrap()
+    }
 }
