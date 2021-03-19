@@ -1,7 +1,12 @@
 #[allow(unused_imports)]
+use itertools::*;
+#[allow(unused_imports)]
 use proconio::fastout;
+#[allow(unused_imports)]
 use std::{
     cell::RefCell,
+    cmp::{max, min},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
     fmt::Debug,
     io::{self, BufRead, Read},
     rc::Rc,
@@ -12,10 +17,55 @@ use std::{
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: i32,
+        n: usize
     };
     let mut ans = 0;
+    for n_i in 1..=n {
+        if !n_i.to_string().to_vec_char().contains(&'7')
+            && !n_i.to_base(8).to_string().to_vec_char().contains(&'7')
+        {
+            ans += 1;
+        }
+    }
     echo!(ans);
+}
+
+trait StrToVecChar {
+    fn to_vec_char(&self) -> Vec<char>;
+}
+impl StrToVecChar for str {
+    fn to_vec_char(&self) -> Vec<char> {
+        self.chars().collect::<Vec<char>>()
+    }
+}
+
+trait ToBase<T> {
+    fn to_base(self, base: T) -> T;
+}
+impl<T> ToBase<T> for T
+where
+    T: Copy
+        + std::ops::Add<Output = T>
+        + std::ops::Sub<Output = T>
+        + std::ops::Mul<Output = T>
+        + std::ops::Div<Output = T>
+        + std::ops::Rem<Output = T>
+        + std::cmp::PartialOrd,
+{
+    fn to_base(self, base: T) -> T {
+        let zero = base - base;
+        let one = base / base;
+        let ten = (one + one + one) * (one + one + one) + one;
+        let mut n = self;
+        let mut ret = zero;
+        let mut digit = one;
+        while n > zero {
+            ret = ret + n % base * digit;
+            n = n / base;
+            digit = digit * ten;
+        }
+        ret
+    }
 }
 
 #[allow(unused_macros)]
@@ -118,7 +168,7 @@ pub fn bytes(s: String) -> Vec<u8> {
 
 #[inline]
 pub fn chars(s: String) -> Vec<char> {
-    s.chars().collect::<Vec<char>>()
+    s.chars().collect()
 }
 
 #[doc(hidden)]
@@ -140,7 +190,7 @@ where
         this(A::read_from_scanner(scanner))
     }
 }
-enum Scanner {
+pub enum Scanner {
     Uninited,
     Once {
         words: SplitWhitespace<'static>,
