@@ -39,5 +39,5 @@ path = "src/bin/e.rs"
 name = "abc170-f"
 path = "src/bin/f.rs"
 [dependencies]
-proconio = { version = "0.3.6", features = ["derive"] }
+proconio = { version = "0.3.7", features = ["derive"] }
 itertools = "=0.9.0"
