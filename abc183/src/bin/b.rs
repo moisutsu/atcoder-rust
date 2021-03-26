@@ -1,8 +1,25 @@
 #[allow(unused_imports)]
-use proconio::marker::*;
-use proconio::*;
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::{marker::*, *};
+#[allow(unused_imports)]
+use std::{
+    cmp::{max, min, Reverse},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+};
+
+#[fastout]
+#[allow(non_snake_case)]
+fn main() {
+    input! {
+        sx: f64, sy: f64, gx: f64, gy: f64,
+    };
+    let gy = -gy;
+    echo!(-sy * ((gx - sx) / (gy - sy)) + sx);
+}
 
 #[allow(unused_macros)]
+#[macro_export]
 macro_rules! echo {
     ($($e:expr),*) => {
         let mut s = Vec::new();
@@ -11,15 +28,4 @@ macro_rules! echo {
         )*
         println!("{}" , s.join(" "));
     }
-}
-
-#[fastout]
-#[allow(non_snake_case)]
-fn main() {
-    input! {
-        N: i32,
-    }
-    let mut ans = 0;
-    ans = N;
-    echo!(ans);
 }
