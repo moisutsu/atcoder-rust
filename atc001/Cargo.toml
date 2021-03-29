@@ -26,3 +26,4 @@ path = "src/bin/c.rs"
 [dependencies]
 proconio = { version = "0.3.7", features = ["derive"] }
 itertools = "=0.9.0"
+num = "0.2.1"
