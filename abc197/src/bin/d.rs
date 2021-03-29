@@ -8,20 +8,24 @@ use std::{
     collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
 };
 
+use num::Complex;
+
+type Pt = Complex<f64>;
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize,
+        N: f64,
         x0: f64, y0: f64,
         xn2: f64, yn2: f64,
     };
-    let (cx, cy) = ((x0 + xn2) / 2., (y0 + yn2) / 2.);
-    let ang = 360.0 / (N as f64) / 180.0 * std::f64::consts::PI;
-    let (mx0, my0) = (x0 - cx, y0 - cy);
-    let mx1 = mx0 * ang.cos() - my0 * ang.sin();
-    let my1 = mx0 * ang.sin() + my0 * ang.cos();
-    echo!(mx1 + cx, my1 + cy);
+    let p0 = Pt::new(x0, y0);
+    let pn2 = Pt::new(xn2, yn2);
+    let c = (p0 + pn2) / Pt::new(2., 0.);
+    let r = Pt::from_polar(&1.0, &(2. * std::f64::consts::PI / N));
+    let p1 = (p0 - c) * r + c;
+    echo!(p1.re, p1.im);
 }
 
 #[allow(unused_macros)]
