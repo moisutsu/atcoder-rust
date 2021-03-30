@@ -28,14 +28,12 @@ fn main() {
     };
     let mut ans = false;
 
-    'outer: for y in 0..10 {
-        for x in 0..10 {
-            let mut A = A.clone();
-            A[y][x] = 'o';
-            if dfs(&A) {
-                ans = true;
-                break 'outer;
-            }
+    for (y, x) in iproduct!(0..10, 0..10) {
+        let mut A = A.clone();
+        A[y][x] = 'o';
+        if dfs(&A) {
+            ans = true;
+            break;
         }
     }
 
@@ -46,31 +44,27 @@ fn dfs(A: &[Vec<char>]) -> bool {
     let mut cnt = 0;
     let mut stack = vec![];
     let mut seen = vec![vec![false; 10]; 10];
-    for y in 0..10 {
-        for x in 0..10 {
-            if A[y][x] == 'x' {
-                seen[y][x] = true;
-            }
+    for (y, x) in iproduct!(0..10, 0..10) {
+        if A[y][x] == 'x' {
+            seen[y][x] = true;
         }
     }
-    for y in 0..10 {
-        for x in 0..10 {
-            if seen[y][x] {
-                continue;
-            }
-            cnt += 1;
-            stack.push((x, y));
-            seen[y][x] = true;
-            while let Some((cx, cy)) = stack.pop() {
-                for &(mx, my) in &ADJ_4 {
-                    let sx = cx.wrapping_add(mx);
-                    let sy = cy.wrapping_add(my);
-                    if sx >= 10 || sy >= 10 || seen[sy][sx] {
-                        continue;
-                    }
-                    stack.push((sx, sy));
-                    seen[sy][sx] = true;
+    for (y, x) in iproduct!(0..10, 0..10) {
+        if seen[y][x] {
+            continue;
+        }
+        cnt += 1;
+        stack.push((x, y));
+        seen[y][x] = true;
+        while let Some((cx, cy)) = stack.pop() {
+            for &(mx, my) in &ADJ_4 {
+                let sx = cx.wrapping_add(mx);
+                let sy = cy.wrapping_add(my);
+                if sx >= 10 || sy >= 10 || seen[sy][sx] {
+                    continue;
                 }
+                stack.push((sx, sy));
+                seen[sy][sx] = true;
             }
         }
     }
