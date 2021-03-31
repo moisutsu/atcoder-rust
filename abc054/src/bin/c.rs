@@ -1,26 +1,48 @@
-use proconio::*;
-use itertools::Itertools;
+#[allow(unused_imports)]
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::{marker::*, *};
+#[allow(unused_imports)]
+use std::{
+    cmp::{max, min, Reverse},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+};
 
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        N: usize, M: usize,
-        ab: [(usize, usize); M],
-    }
-    let ab: Vec<(usize, usize)> = ab.iter().map(|t| (t.0 - 1, t.1 - 1)).collect();
+        n: usize, m: usize,
+        ab: [(Usize1, Usize1); m],
+    };
+    let mut g = vec![vec![false; n]; n];
     let mut ans = 0;
-    'outer: for perm in (0..N).permutations(N) {
-        if perm[0] != 0 {
+    for (a, b) in ab {
+        g[a][b] = true;
+        g[b][a] = true;
+    }
+    'outer: for vs in (0..n).permutations(n) {
+        if vs[0] != 0 {
             continue;
         }
-        for i in 0..perm.len() - 1 {
-            if !ab.contains(&(perm[i], perm[i + 1])) && !ab.contains(&(perm[i + 1], perm[i])) {
+        for (&from, &to) in vs.iter().tuple_windows() {
+            if !g[from][to] {
                 continue 'outer;
             }
         }
         ans += 1;
     }
+    echo!(ans);
+}
 
-    println!("{}", ans);
+#[allow(unused_macros)]
+#[macro_export]
+macro_rules! echo {
+    ($($e:expr),*) => {
+        let mut s = Vec::new();
+        $(
+            s.push(format!("{}" , $e));
+        )*
+        println!("{}" , s.join(" "));
+    }
 }
