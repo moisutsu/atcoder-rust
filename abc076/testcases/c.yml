@@ -1,0 +1,20 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      ?tc????
+      coder
+    out: |
+      atcoder
+  - name: sample2
+    in: |
+      ??p??d??
+      abc
+    out: |
+      UNRESTORABLE
+
+extend: []
