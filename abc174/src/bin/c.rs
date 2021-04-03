@@ -14,7 +14,6 @@ fn main() {
     input! {
         k: i64,
     };
-    let mut set = HashSet::new();
     let mut ans = -1;
     let mut n = 7;
     for i in 1..=k {
@@ -22,10 +21,6 @@ fn main() {
             ans = i;
             break;
         }
-        if set.contains(&n) {
-            break;
-        }
-        set.insert(n);
         n = (n * 10 + 7) % k
     }
 
