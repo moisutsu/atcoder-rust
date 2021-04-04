@@ -11,16 +11,7 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        x: i128, y: i128
-    };
-    let mut ans = 0;
-    let mut a = x;
-    while a <= y {
-        ans += 1;
-        a *= 2;
-    }
-    echo!(ans);
+    input! {};
 }
 
 #[allow(unused_macros)]
