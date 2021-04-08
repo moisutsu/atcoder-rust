@@ -1,8 +1,25 @@
 #[allow(unused_imports)]
-use proconio::marker::*;
-use proconio::*;
+use itertools::*;
+#[allow(unused_imports)]
+use proconio::{marker::*, *};
+#[allow(unused_imports)]
+use std::{
+    cmp::{max, min, Reverse},
+    collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
+};
+
+#[fastout]
+#[allow(non_snake_case)]
+fn main() {
+    input! {
+        n: usize, w: i64,
+        stp: [(i64, i64, i64); n]
+    };
+    
+}
 
 #[allow(unused_macros)]
+#[macro_export]
 macro_rules! echo {
     ($($e:expr),*) => {
         let mut s = Vec::new();
@@ -11,15 +28,4 @@ macro_rules! echo {
         )*
         println!("{}" , s.join(" "));
     }
-}
-
-#[fastout]
-#[allow(non_snake_case)]
-fn main() {
-    input! {
-        N: i32,
-    }
-    let mut ans = 0;
-    ans = N;
-    echo!(ans);
 }
