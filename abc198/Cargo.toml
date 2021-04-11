@@ -1,0 +1,44 @@
+[package]
+name = "abc198"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "abc198-a", problem = { platform = "atcoder", contest = "abc198", index = "A", url = "https://atcoder.jp/contests/abc198/tasks/abc198_a" } }
+b = { name = "abc198-b", problem = { platform = "atcoder", contest = "abc198", index = "B", url = "https://atcoder.jp/contests/abc198/tasks/abc198_b" } }
+c = { name = "abc198-c", problem = { platform = "atcoder", contest = "abc198", index = "C", url = "https://atcoder.jp/contests/abc198/tasks/abc198_c" } }
+d = { name = "abc198-d", problem = { platform = "atcoder", contest = "abc198", index = "D", url = "https://atcoder.jp/contests/abc198/tasks/abc198_d" } }
+e = { name = "abc198-e", problem = { platform = "atcoder", contest = "abc198", index = "E", url = "https://atcoder.jp/contests/abc198/tasks/abc198_e" } }
+f = { name = "abc198-f", problem = { platform = "atcoder", contest = "abc198", index = "F", url = "https://atcoder.jp/contests/abc198/tasks/abc198_f" } }
+
+[[bin]]
+name = "abc198-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc198-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc198-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc198-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc198-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc198-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.7", features = ["derive"] }
+itertools = "=0.9.0"
+num = "0.2.1"
