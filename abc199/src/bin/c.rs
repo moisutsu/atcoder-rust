@@ -11,7 +11,38 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        n: usize,
+        s: Chars,
+        q: usize,
+        tab: [(usize, usize, usize); q],
+    };
+    let mut front = s[..n].to_vec();
+    let mut back = s[n..].to_vec();
+    for (t, a, b) in tab {
+        match t {
+            1 => {
+                let (a, b) = (a - 1, b - 1);
+                let ac = if a < n { front[a] } else { back[a - n] };
+                let bc = if b < n { front[b] } else { back[b - n] };
+                if a < n {
+                    front[a] = bc;
+                } else {
+                    back[a - n] = bc;
+                }
+                if b < n {
+                    front[b] = ac;
+                } else {
+                    back[b - n] = ac;
+                }
+            }
+            2 => {
+                std::mem::swap(&mut front, &mut back);
+            }
+            _ => unreachable!(),
+        }
+    }
+    echo!(front.iter().chain(back.iter()).collect::<String>());
 }
 
 #[allow(unused_macros)]
