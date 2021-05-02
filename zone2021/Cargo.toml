@@ -1,0 +1,44 @@
+[package]
+name = "zone2021"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete]
+config = "../compete.toml"
+
+[package.metadata.cargo-compete.bin]
+a = { name = "zone2021-a", problem = { platform = "atcoder", contest = "zone2021", index = "A", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_a" } }
+b = { name = "zone2021-b", problem = { platform = "atcoder", contest = "zone2021", index = "B", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_b" } }
+c = { name = "zone2021-c", problem = { platform = "atcoder", contest = "zone2021", index = "C", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_c" } }
+d = { name = "zone2021-d", problem = { platform = "atcoder", contest = "zone2021", index = "D", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_d" } }
+e = { name = "zone2021-e", problem = { platform = "atcoder", contest = "zone2021", index = "E", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_e" } }
+f = { name = "zone2021-f", problem = { platform = "atcoder", contest = "zone2021", index = "F", url = "https://atcoder.jp/contests/zone2021/tasks/zone2021_f" } }
+
+[[bin]]
+name = "zone2021-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "zone2021-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "zone2021-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "zone2021-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "zone2021-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "zone2021-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.7", features = ["derive"] }
+itertools = "=0.9.0"
+num = "0.2.1"
