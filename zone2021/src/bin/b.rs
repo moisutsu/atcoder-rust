@@ -15,9 +15,9 @@ fn main() {
         n: usize, d: f64, h: f64,
         dh: [(f64, f64); n],
     };
-    let mut ans = std::f64::MAX;
+    let mut ans = 0.;
     for (d_i, h_i) in dh {
-        ans = if ans > (d * h_i - d_i * h) / (d - d_i) {
+        ans = if ans < (d * h_i - d_i * h) / (d - d_i) {
             (d * h_i - d_i * h) / (d - d_i)
         } else {
             ans
