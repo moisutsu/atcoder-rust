@@ -8,18 +8,27 @@ use std::{
     collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
 };
 
+macro_rules! YesNo {
+    ($ flag : expr ) => {
+        if $flag {
+            "Yes"
+        } else {
+            "No"
+        }
+    };
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
     input! {
-        n: usize,
-        x: [i64; n],
+        a: usize, b: usize, c: usize,
     };
-    let mut ans = 1 << 60;
-    for p in 1..=100 {
-        ans = min(ans, x.iter().map(|&x_i| (x_i - p).pow(2)).sum());
-    }
-    echo!(ans);
+    let mut set = HashSet::new();
+    set.insert(a);
+    set.insert(b);
+    set.insert(c);
+    echo!(YesNo!(set.len() == 2));
 }
 
 #[allow(unused_macros)]

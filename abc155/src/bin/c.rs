@@ -13,13 +13,24 @@ use std::{
 fn main() {
     input! {
         n: usize,
-        x: [i64; n],
+        s: [String; n],
     };
-    let mut ans = 1 << 60;
-    for p in 1..=100 {
-        ans = min(ans, x.iter().map(|&x_i| (x_i - p).pow(2)).sum());
+    let mut map = HashMap::new();
+    for s_i in s {
+        *map.entry(s_i).or_insert(1) += 1;
     }
-    echo!(ans);
+    let mut cnt = 0;
+    for key in map.keys() {
+        cnt = max(cnt, map[key]);
+    }
+    let mut ans = vec![];
+    for key in map.keys() {
+        if map[key] == cnt {
+            ans.push(key.clone());
+        }
+    }
+    ans.sort();
+    echo!(ans.join("\n"));
 }
 
 #[allow(unused_macros)]

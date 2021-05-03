@@ -11,15 +11,7 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {
-        n: usize,
-        x: [i64; n],
-    };
-    let mut ans = 1 << 60;
-    for p in 1..=100 {
-        ans = min(ans, x.iter().map(|&x_i| (x_i - p).pow(2)).sum());
-    }
-    echo!(ans);
+    input! {};
 }
 
 #[allow(unused_macros)]

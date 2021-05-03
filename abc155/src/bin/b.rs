@@ -13,13 +13,15 @@ use std::{
 fn main() {
     input! {
         n: usize,
-        x: [i64; n],
+        a: [i64; n],
     };
-    let mut ans = 1 << 60;
-    for p in 1..=100 {
-        ans = min(ans, x.iter().map(|&x_i| (x_i - p).pow(2)).sum());
+    let mut ans = true;
+    for a_i in a {
+        if a_i % 2 == 0 && (a_i % 3 != 0 && a_i % 5 != 0) {
+            ans = false;
+        }
     }
-    echo!(ans);
+    echo!(if ans { "APPROVED" } else { "DENIED" });
 }
 
 #[allow(unused_macros)]
