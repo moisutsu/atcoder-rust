@@ -11,7 +11,15 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        mut h: i64,
+    };
+    let mut ans = 1;
+    while h != 1 {
+        h = (h + 1) / 2;
+        ans *= 2;
+    }
+    echo!(ans);
 }
 
 #[allow(unused_macros)]

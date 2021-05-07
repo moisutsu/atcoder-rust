@@ -11,7 +11,16 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        n: usize, k: usize,
+        mut h: [i64; n]
+    };
+    h.sort_by_key(|&x| Reverse(x));
+    if k >= n {
+        echo!(0);
+    } else {
+        echo!(h[k..].iter().sum::<i64>());
+    }
 }
 
 #[allow(unused_macros)]

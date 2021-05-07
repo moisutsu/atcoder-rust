@@ -11,7 +11,10 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        h: i64, a: i64,
+    };
+    echo!(h / a + (h % a != 0) as i64);
 }
 
 #[allow(unused_macros)]

@@ -8,10 +8,24 @@ use std::{
     collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
 };
 
+macro_rules! YesNo {
+    ($ flag : expr ) => {
+        if $flag {
+            "Yes"
+        } else {
+            "No"
+        }
+    };
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        h: i64, n: i64,
+        a: [i64; n]
+    };
+    echo!(YesNo!(a.into_iter().sum::<i64>() >= h));
 }
 
 #[allow(unused_macros)]
