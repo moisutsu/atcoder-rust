@@ -1,0 +1,47 @@
+[package]
+name = "arc120"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+arc120-a = { alias = "a", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_a" }
+arc120-b = { alias = "b", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_b" }
+arc120-c = { alias = "c", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_c" }
+arc120-d = { alias = "d", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_d" }
+arc120-e = { alias = "e", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_e" }
+arc120-f = { alias = "f", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_f" }
+arc120-f2 = { alias = "f2", problem = "https://atcoder.jp/contests/arc120/tasks/arc120_f2" }
+
+[[bin]]
+name = "arc120-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "arc120-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "arc120-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "arc120-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "arc120-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "arc120-f"
+path = "src/bin/f.rs"
+
+[[bin]]
+name = "arc120-f2"
+path = "src/bin/f2.rs"
+[dependencies]
+proconio = { version = "0.3.7", features = ["derive"] }
+itertools = "=0.9.0"
+num = "0.2.1"
+[dev-dependencies]
