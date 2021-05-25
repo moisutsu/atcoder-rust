@@ -11,7 +11,11 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        h: usize, w: usize,
+        s: [Chars; h],
+    };
+    
 }
 
 #[allow(unused_macros)]
