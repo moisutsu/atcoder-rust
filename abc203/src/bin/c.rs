@@ -13,15 +13,11 @@ use std::{
 fn main() {
     input! {
         n: usize, k: usize,
-        ab: [(usize, usize); n]
+        mut ab: [(usize, usize); n]
     };
-    let mut map = BTreeMap::new();
-    for (a, b) in ab {
-        *map.entry(a).or_insert(0) += b;
-    }
-
+    ab.sort();
     let mut ans = k;
-    for (a, b) in map {
+    for (a, b) in ab {
         if ans < a {
             break;
         }
