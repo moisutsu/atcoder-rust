@@ -11,7 +11,23 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        n: usize, k: usize,
+        ab: [(usize, usize); n]
+    };
+    let mut map = BTreeMap::new();
+    for (a, b) in ab {
+        *map.entry(a).or_insert(0) += b;
+    }
+
+    let mut ans = k;
+    for (a, b) in map {
+        if ans < a {
+            break;
+        }
+        ans += b;
+    }
+    echo!(ans);
 }
 
 #[allow(unused_macros)]
