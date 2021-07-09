@@ -1,0 +1,42 @@
+[package]
+name = "abc207"
+version = "0.1.0"
+authors = ["moisutsu <moisutsu@gmail.com>"]
+edition = "2018"
+
+[package.metadata.cargo-compete.bin]
+abc207-a = { alias = "a", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_a" }
+abc207-b = { alias = "b", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_b" }
+abc207-c = { alias = "c", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_c" }
+abc207-d = { alias = "d", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_d" }
+abc207-e = { alias = "e", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_e" }
+abc207-f = { alias = "f", problem = "https://atcoder.jp/contests/abc207/tasks/abc207_f" }
+
+[[bin]]
+name = "abc207-a"
+path = "src/bin/a.rs"
+
+[[bin]]
+name = "abc207-b"
+path = "src/bin/b.rs"
+
+[[bin]]
+name = "abc207-c"
+path = "src/bin/c.rs"
+
+[[bin]]
+name = "abc207-d"
+path = "src/bin/d.rs"
+
+[[bin]]
+name = "abc207-e"
+path = "src/bin/e.rs"
+
+[[bin]]
+name = "abc207-f"
+path = "src/bin/f.rs"
+[dependencies]
+proconio = { version = "0.3.7", features = ["derive"] }
+itertools = "=0.9.0"
+num = "0.2.1"
+[dev-dependencies]
