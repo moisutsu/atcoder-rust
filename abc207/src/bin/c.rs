@@ -13,18 +13,18 @@ use std::{
 fn main() {
     input! {
         n: usize,
-        tlr: [(i64, usize, usize); n]
+        tlr: [(i64, f64, f64); n]
     };
-    let mut sections: Vec<Vec<usize>> = vec![];
+    let mut sections: Vec<Vec<f64>> = vec![];
     let mut ans = 0;
     for (t, mut l, mut r) in tlr {
         match t {
             1 => (),
-            2 => r -= 1,
-            3 => l += 1,
+            2 => r -= 0.5,
+            3 => l += 0.5,
             4 => {
-                l += 1;
-                r -= 1;
+                l += 0.5;
+                r -= 0.5;
             }
             _ => unreachable!(),
         };
