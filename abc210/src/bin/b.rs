@@ -8,10 +8,30 @@ use std::{
     collections::{BTreeMap, BTreeSet, BinaryHeap, HashMap, HashSet, VecDeque},
 };
 
+trait GetIndex {
+    type Element;
+    fn get_index(&self, value: &Self::Element) -> Option<usize>;
+}
+impl<T: PartialEq> GetIndex for [T] {
+    type Element = T;
+    fn get_index(&self, value: &Self::Element) -> Option<usize> {
+        self.iter().position(|x| x == value)
+    }
+}
+
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        _n: usize,
+        s: Chars
+    };
+    let one_index = s.get_index(&'1').unwrap();
+    echo!(if one_index % 2 == 0 {
+        "Takahashi"
+    } else {
+        "Aoki"
+    });
 }
 
 #[allow(unused_macros)]

@@ -11,7 +11,29 @@ use std::{
 #[fastout]
 #[allow(non_snake_case)]
 fn main() {
-    input! {};
+    input! {
+        n: usize,
+        k: usize,
+        c: [usize; n]
+    };
+
+    let mut map = HashMap::new();
+
+    for c_i in c.iter().take(k) {
+        *map.entry(c_i).or_insert(0) += 1;
+    }
+    let mut ans = map.keys().len();
+
+    for i in k..n {
+        *map.entry(&c[i]).or_insert(0) += 1;
+        *map.entry(&c[i - k]).or_insert(0) -= 1;
+        if map.get(&c[i - k]).unwrap() == &0 {
+            map.remove(&c[i - k]);
+        }
+        ans = max(ans, map.keys().len());
+    }
+
+    echo!(ans);
 }
 
 #[allow(unused_macros)]
