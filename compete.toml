@@ -150,7 +150,7 @@ path = "./{{ contest }}"
 
 [test]
 # Toolchain for the test. (optional)
-toolchain = ""
+# toolchain = ""
 # toolchain = "1.42.0"
 # Profile for `cargo build`. ("dev" | "release")
 #
